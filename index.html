@@ -4,15 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="VELQOR — أزياء رجالية فاخرة في العراق. تسوق الأساسيات العصرية مع توصيل لجميع المحافظات العراقية.">
-    <title>VELQOR </title>
+    <meta name="description" content="VELQOR — أزياء رجالية فاخرة في العراق. تسوق الأساسيات العصرية مع توصيل لجميع المحافظات العراقية.">
+    <title>VELQOR</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Amiri:wght@400;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
@@ -89,24 +86,15 @@
             opacity: .2;
         }
 
-        body,
-        button,
-        input,
-        select,
-        textarea {
+        body, button, input, select, textarea {
             font-family: var(--sans);
         }
 
-        button,
-        a,
-        input,
-        select,
-        textarea {
+        button, a, input, select, textarea {
             -webkit-tap-highlight-color: transparent;
         }
 
-        button,
-        select {
+        button, select {
             cursor: pointer;
         }
 
@@ -115,11 +103,7 @@
             text-decoration: none;
         }
 
-        button:focus-visible,
-        a:focus-visible,
-        input:focus-visible,
-        select:focus-visible,
-        textarea:focus-visible {
+        button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
             outline: 2px solid var(--accent-base);
             outline-offset: 4px;
         }
@@ -134,21 +118,10 @@
             resize: vertical;
         }
 
-        .num,
-        .product-price,
-        .detail-price,
-        .detail-sku,
-        .drawer-price,
-        #cartCount,
-        #drawerSubtotal,
-        #drawerTotal,
-        #checkoutTotal,
-        .results-count,
-        #adminProductCount,
-        #adminOrderCount,
-        .admin-item-info p,
-        .admin-order-body,
-        .summary-line span:last-child,
+        .num, .product-price, .detail-price, .detail-sku, .drawer-price,
+        #cartCount, #drawerSubtotal, #drawerTotal, #checkoutTotal,
+        .results-count, #adminProductCount, #adminOrderCount,
+        .admin-item-info p, .admin-order-body, .summary-line span:last-child,
         .summary-total span:last-child {
             font-family: var(--mono);
             font-variant-numeric: tabular-nums;
@@ -431,6 +404,7 @@
             height: 24px;
         }
 
+        /* HERO — replaced with v.png */
         .hero {
             max-width: var(--container);
             min-height: 620px;
@@ -597,20 +571,6 @@
             transform: none;
         }
 
-        .hero-note {
-            margin-top: 42px;
-            display: flex;
-            justify-content: center;
-            gap: 22px;
-            color: rgba(255, 255, 255, .8);
-            font-size: 10px;
-            letter-spacing: 1.5px;
-        }
-
-        .hero-note span:first-child {
-            color: var(--accent-light);
-        }
-
         .trust-strip {
             min-height: 68px;
             display: flex;
@@ -664,9 +624,7 @@
             margin-bottom: 38px;
         }
 
-        .section-heading h2,
-        .story-copy h2,
-        .contact-section h2 {
+        .section-heading h2, .story-copy h2, .contact-section h2 {
             font-family: var(--serif);
             font-weight: 700;
             font-size: clamp(34px, 5vw, 52px);
@@ -676,9 +634,7 @@
             text-wrap: balance;
         }
 
-        .section-heading h2 em,
-        .story-copy h2 em,
-        .contact-section h2 em {
+        .section-heading h2 em, .story-copy h2 em, .contact-section h2 em {
             color: var(--accent-base);
             font-weight: 700;
         }
@@ -777,8 +733,7 @@
             border-bottom: 0;
         }
 
-        .suggestion-item:hover,
-        .suggestion-item:focus-visible {
+        .suggestion-item:hover, .suggestion-item:focus-visible {
             background: var(--cream);
             outline: none;
         }
@@ -804,29 +759,9 @@
             font-size: 12px;
         }
 
+        /* REMOVED FILTERS — single category now */
         .filters {
-            display: flex;
-            gap: 9px;
-            flex-wrap: wrap;
-            margin-bottom: 15px;
-        }
-
-        .filter-btn {
-            border: 1px solid var(--line);
-            border-radius: 30px;
-            background: transparent;
-            padding: 10px 18px;
-            color: var(--muted);
-            font-size: 12px;
-            transition: all .25s;
-            font-weight: 500;
-        }
-
-        .filter-btn:hover,
-        .filter-btn.active {
-            background: var(--accent-base);
-            color: #fff;
-            border-color: var(--accent-base);
+            display: none;
         }
 
         .results-count {
@@ -836,6 +771,7 @@
             font-size: 11px;
         }
 
+        /* PREMIUM PRODUCT CARD */
         .product-grid {
             display: grid;
             grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -846,14 +782,22 @@
             min-width: 0;
             animation: rise .5s both;
             cursor: pointer;
-            border: 0.5px solid transparent;
-            border-radius: var(--radius);
-            transition: border-color .3s, box-shadow .3s;
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: 4px;
+            overflow: hidden;
+            transition: transform .4s cubic-bezier(.2, .7, .3, 1), box-shadow .4s, border-color .4s;
+            position: relative;
         }
 
         .product-card:hover {
-            border-color: var(--line);
-            box-shadow: var(--shadow-hover);
+            transform: translateY(-6px);
+            box-shadow: 0 30px 60px rgba(61, 31, 44, .18);
+            border-color: var(--accent-base);
+        }
+
+        [data-theme="dark"] .product-card:hover {
+            box-shadow: 0 30px 60px rgba(0, 0, 0, .6);
         }
 
         .product-image {
@@ -861,7 +805,6 @@
             position: relative;
             background: var(--card-bg);
             overflow: hidden;
-            border-radius: var(--radius);
         }
 
         .product-image::before {
@@ -886,17 +829,13 @@
 
         .product-image img {
             height: 100%;
-            transition: transform .65s cubic-bezier(.2, .7, .3, 1);
+            transition: transform .7s cubic-bezier(.2, .7, .3, 1);
             position: relative;
             z-index: 1;
         }
 
         .product-card:hover .product-image img {
-            transform: scale(1.06);
-        }
-
-        .product-card.parallax .product-image img {
-            transform: translateY(var(--py, 0)) scale(1.06);
+            transform: scale(1.07);
         }
 
         .corner-mark {
@@ -970,17 +909,18 @@
             right: 10px;
             bottom: 10px;
             min-height: 44px;
-            background: rgba(255, 255, 255, .96);
+            background: rgba(255, 255, 255, .97);
             color: #3d1f2c;
             border: 0;
-            border-radius: var(--radius);
+            border-radius: 2px;
             font-size: 11px;
             font-weight: 700;
             transform: translateY(10px);
             opacity: 0;
-            transition: transform .25s, opacity .25s, background .25s;
+            transition: transform .25s, opacity .25s, background .25s, color .25s;
             z-index: 3;
             letter-spacing: 1px;
+            box-shadow: 0 6px 20px rgba(0,0,0,.15);
         }
 
         .product-card:hover .quick-add,
@@ -1010,7 +950,8 @@
         }
 
         .product-info {
-            padding-top: 16px;
+            padding: 18px 16px 20px;
+            text-align: center;
         }
 
         .product-category {
@@ -1023,20 +964,23 @@
         .product-info h3 {
             font-size: 15px;
             font-weight: 600;
-            margin: 5px 0 8px;
+            margin: 8px 0 10px;
             line-height: 1.4;
+            font-family: var(--serif);
         }
 
         .product-bottom {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            gap: 8px;
+            gap: 12px;
+            flex-wrap: wrap;
         }
 
         .product-price {
             font-size: 14px;
             font-weight: 700;
+            color: var(--accent-base);
         }
 
         .product-price del {
@@ -1049,7 +993,9 @@
         .product-color {
             font-size: 10px;
             color: var(--muted);
-            text-align: left;
+            text-align: center;
+            width: 100%;
+            margin-top: 4px;
         }
 
         .empty-state {
@@ -1059,32 +1005,18 @@
             text-align: center;
         }
 
+        /* STORY — removed image, kept text */
         .story-section {
             max-width: var(--container);
             margin: auto;
             padding: 100px 5%;
             display: grid;
-            grid-template-columns: 1fr .9fr;
-            gap: 10%;
+            grid-template-columns: 1fr;
+            gap: 0;
             align-items: center;
             position: relative;
             z-index: 2;
-        }
-
-        .story-image {
-            height: 460px;
-            overflow: hidden;
-            background: var(--cream);
-            border-radius: var(--radius);
-        }
-
-        .story-image img {
-            height: 100%;
-            transition: transform .7s;
-        }
-
-        .story-image:hover img {
-            transform: scale(1.04);
+            text-align: center;
         }
 
         .story-copy h2 {
@@ -1095,8 +1027,8 @@
             color: var(--muted);
             font-size: 14px;
             line-height: 2;
-            max-width: 420px;
-            margin-bottom: 25px;
+            max-width: 560px;
+            margin: 0 auto 25px;
             text-wrap: pretty;
         }
 
@@ -1928,9 +1860,7 @@
             color: var(--muted);
         }
 
-        .field input,
-        .field select,
-        .field textarea {
+        .field input, .field select, .field textarea {
             width: 100%;
             min-height: 48px;
             padding: 12px 14px;
@@ -1942,16 +1872,12 @@
             border-radius: var(--radius);
         }
 
-        .field input:focus,
-        .field select:focus,
-        .field textarea:focus {
+        .field input:focus, .field select:focus, .field textarea:focus {
             border-color: var(--accent-base);
             outline: none;
         }
 
-        .field.error input,
-        .field.error select,
-        .field.error textarea {
+        .field.error input, .field.error select, .field.error textarea {
             border-color: var(--danger);
         }
 
@@ -2503,10 +2429,6 @@
                 gap: 6%;
             }
 
-            .story-image {
-                height: 400px;
-            }
-
             .product-detail {
                 grid-template-columns: 1fr;
                 gap: 35px;
@@ -2615,12 +2537,6 @@
                 font-size: 14px;
             }
 
-            .hero-note {
-                margin-top: 35px;
-                font-size: 9px;
-                gap: 14px;
-            }
-
             .trust-strip {
                 flex-wrap: wrap;
                 gap: 14px 22px;
@@ -2663,15 +2579,6 @@
                 justify-content: space-between;
             }
 
-            .filters {
-                gap: 7px;
-            }
-
-            .filter-btn {
-                padding: 9px 14px;
-                font-size: 11px;
-            }
-
             .product-grid {
                 gap: 26px 12px;
             }
@@ -2706,7 +2613,7 @@
             }
 
             .product-info {
-                padding-top: 11px;
+                padding: 12px 10px 16px;
             }
 
             .product-info h3 {
@@ -2722,13 +2629,7 @@
             }
 
             .story-section {
-                grid-template-columns: 1fr;
                 padding: 65px 6%;
-                gap: 35px;
-            }
-
-            .story-image {
-                height: min(100vw, 400px);
             }
 
             .story-copy>p:not(.eyebrow) {
@@ -2863,12 +2764,12 @@
     <main>
         <section class="hero" id="home">
             <div class="hero-bg">
-                <img src="https://images.unsplash.com/photo-1516257984-b1b4d707412e?auto=format&fit=crop&w=1600&q=90" alt="رجل بأناقة هادئة" loading="eager">
+                <img src="v.png" alt="VELQOR — أزياء رجالية" loading="eager">
             </div>
             <div class="hero-arc" aria-hidden="true"></div>
             <div class="hero-copy reveal">
                 <p class="eyebrow"><span></span> مجموعة الأساسيات اليومية للرجال</p>
-                <h1>ارتدِ<br>قصتك<span>.</span></h1>
+                <h1>قصتك<span>.</span></h1>
                 <p class="hero-description">
                     أزياء رجالية عصرية أساسية. ثقة خالدة.
                     اعثر على القطع التي تشبهك — توصيل لجميع أنحاء العراق.
@@ -2877,10 +2778,6 @@
                     اكتشف المجموعة
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
                 </a>
-                <div class="hero-note">
-                    <span>01 / 03</span>
-                    <span>مصنوع ليومك</span>
-                </div>
             </div>
         </section>
 
@@ -2919,12 +2816,9 @@
                 </label>
             </div>
 
-            <div class="filters reveal" id="filters" aria-label="فئات المنتجات">
-                <button class="filter-btn active" data-filter="all" aria-pressed="true">كل القطع</button>
-                <button class="filter-btn" data-filter="tops" aria-pressed="false">قمصان</button>
-                <button class="filter-btn" data-filter="bottoms" aria-pressed="false">بناطلين</button>
-                <button class="filter-btn" data-filter="outerwear" aria-pressed="false">جاكيتات</button>
-                <button class="filter-btn" data-filter="accessories" aria-pressed="false">إكسسوارات</button>
+            <!-- Filters removed, single category "كل الأقسام" -->
+            <div class="filters" id="filters" aria-label="فئات المنتجات" hidden>
+                <button class="filter-btn active" data-filter="all" aria-pressed="true">كل الأقسام</button>
             </div>
 
             <p class="results-count" id="resultsCount" aria-live="polite"></p>
@@ -2933,10 +2827,6 @@
         </section>
 
         <section class="story-section" id="story">
-            <div class="story-image reveal">
-                <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1000&q=85"
-                    alt="رجال يستكشفون أنماطهم الشخصية" loading="lazy">
-            </div>
             <div class="story-copy reveal">
                 <p class="eyebrow">أكثر من مجرد ما ترتديه</p>
                 <h2>الأناقة شخصية.<br><em>اجعلها لك.</em></h2>
@@ -3166,6 +3056,7 @@
                         <div class="field">
                             <label for="pfCategory">الفئة</label>
                             <select id="pfCategory">
+                                <option value="all">كل الأقسام</option>
                                 <option value="tops">قمصان</option>
                                 <option value="bottoms">بناطلين</option>
                                 <option value="outerwear">جاكيتات</option>
@@ -3262,17 +3153,19 @@
         const THEME_KEY = "velqor_theme_v2";
         const DELIVERY_FEE = 5000;
 
+        /* FULL COLOR MAP — all names get hex */
         const COLOR_HEX_MAP = {
             red: "#e53935", blue: "#1e88e5", green: "#43a047", yellow: "#fdd835", black: "#212121",
             white: "#ffffff", gray: "#9e9e9e", grey: "#9e9e9e", navy: "#1a237e", pink: "#ec407a",
             purple: "#8e24aa", orange: "#fb8c00", brown: "#6d4c41", beige: "#d7ccc8", cream: "#fff8e1",
             maroon: "#7a2e3f", burgundy: "#6a1b2a", olive: "#827717", teal: "#00897b", cyan: "#00acc1",
             gold: "#ffd700", silver: "#bdbdbd", khaki: "#c0b283", tan: "#d2b48c", charcoal: "#37474f",
-            أحمر: "#e53935", أزرق: "#1e88e5", أخضر: "#43a047", أصفر: "#fdd835", أسود: "#212121",
-            أبيض: "#ffffff", رمادي: "#9e9e9e", كحلي: "#1a237e", وردي: "#ec407a",
-            بنفسجي: "#8e24aa", برتقالي: "#fb8c00", بني: "#6d4c41", بيج: "#d7ccc8", كريمي: "#fff8e1",
-            خمري: "#7a2e3f", عنابي: "#6a1b2a", زيتي: "#827717", تركواز: "#00897b", سماوي: "#00acc1",
-            ذهبي: "#ffd700", فضي: "#bdbdbd", كاكي: "#c0b283", تان: "#d2b48c", فحمي: "#37474f"
+            "أحمر": "#e53935", "أزرق": "#1e88e5", "أخضر": "#43a047", "أصفر": "#fdd835", "أسود": "#212121",
+            "أبيض": "#ffffff", "رمادي": "#9e9e9e", "كحلي": "#1a237e", "وردي": "#ec407a",
+            "بنفسجي": "#8e24aa", "برتقالي": "#fb8c00", "بني": "#6d4c41", "بيج": "#d7ccc8", "كريمي": "#fff8e1",
+            "خمري": "#7a2e3f", "عنابي": "#6a1b2a", "زيتي": "#827717", "تركواز": "#00897b", "سماوي": "#00acc1",
+            "ذهبي": "#ffd700", "فضي": "#bdbdbd", "كاكي": "#c0b283", "تان": "#d2b48c", "فحمي": "#37474f",
+            "جوزي": "#6d4c41"
         };
 
         let products = [];
@@ -3437,10 +3330,9 @@
             const sortValue = sortSelect.value;
 
             let visibleProducts = products.filter(product => {
-                const matchesCategory = activeCategory === "all" || product.category === activeCategory;
                 const colorNames = (product.colors || []).map(c => c.name).join(" ");
                 const searchableText = `${product.name} ${product.category} ${colorNames} ${product.sku || ""}`.toLowerCase();
-                return matchesCategory && searchableText.includes(searchTerm);
+                return searchableText.includes(searchTerm);
             });
 
             if (sortValue === "low") visibleProducts.sort((a, b) => a.price - b.price);
@@ -3504,17 +3396,6 @@
                 });
             });
         }
-
-        filters.addEventListener("click", event => {
-            const button = event.target.closest("[data-filter]");
-            if (!button) return;
-            activeCategory = button.dataset.filter;
-            filters.querySelectorAll("[data-filter]").forEach(btn => {
-                btn.classList.toggle("active", btn === button);
-                btn.setAttribute("aria-pressed", String(btn === button));
-            });
-            renderProducts();
-        });
 
         searchInput.addEventListener("input", () => { renderProducts(); renderSuggestions(); });
         searchInput.addEventListener("focus", renderSuggestions);
@@ -4210,7 +4091,7 @@ ${escapeHTML(itemsText)}
             document.getElementById("pfId").value = id;
             document.getElementById("pfName").value = product.name || "";
             document.getElementById("pfSku").value = product.sku || "";
-            document.getElementById("pfCategory").value = product.category || "tops";
+            document.getElementById("pfCategory").value = product.category || "all";
             document.getElementById("pfBadge").value = product.badge || "";
             document.getElementById("pfPrice").value = product.price || 0;
             document.getElementById("pfOldPrice").value = product.old_price || 0;
@@ -4262,7 +4143,7 @@ ${escapeHTML(itemsText)}
             const wrap = document.getElementById("pfColorsList");
             wrap.innerHTML = pfColors.map((color, i) => `
                 <div class="admin-dynamic-row">
-                    <input type="text" value="${escapeHTML(color.name)}" data-color-name="${i}" placeholder="اسم اللون (مثل: أحمر، كحلي)">
+                    <input type="text" value="${escapeHTML(color.name)}" data-color-name="${i}" placeholder="اسم اللون (مثل: جوزي، أحمر)">
                     <input type="text" value="${escapeHTML(color.hex)}" data-color-hex="${i}" placeholder="#000000">
                     <button type="button" data-remove-color="${i}">×</button>
                 </div>
