@@ -11,35 +11,60 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Noto+Kufi+Arabic:wght@400;500;600;700;800&family=Amiri:wght@400;700&display=swap"
         rel="stylesheet">
 
     <style>
         :root {
-            --ink: #191916;
-            --muted: #77766f;
-            --cream: #f8f6f0;
-            --paper: #fffefa;
+            --ink: #2b1a20;
+            --muted: #8a7a80;
+            --cream: #faf6f6;
+            --paper: #fffdfd;
+            --maroon: #6e1e2b;
+            --maroon-dark: #4d1320;
             --gold: #c49b57;
-            --line: #e8e4da;
+            --line: #eadfe1;
             --serif: "Playfair Display", Georgia, serif;
             --sans: "DM Sans", Arial, sans-serif;
+            --arabic: "Noto Kufi Arabic", "Amiri", serif;
             --container: 1240px;
-            --header-bg: rgba(255, 254, 250, .96);
-            --card-bg: #e8e3d9;
+            --header-bg: rgba(255, 253, 253, .96);
+            --card-bg: #f2e9ea;
             --danger: #b8443a;
             --success: #3d9a5f;
         }
 
         [data-theme="dark"] {
-            --ink: #f2f0e9;
-            --muted: #9c9a92;
-            --cream: #1a1a18;
-            --paper: #111110;
+            --ink: #f2edea;
+            --muted: #a8989c;
+            --cream: #1a1417;
+            --paper: #110d0f;
+            --maroon: #a84458;
+            --maroon-dark: #7a2c3c;
             --gold: #d4ab68;
-            --line: #2b2b28;
-            --header-bg: rgba(17, 17, 16, .96);
-            --card-bg: #232320;
+            --line: #2b2124;
+            --header-bg: rgba(17, 13, 15, .96);
+            --card-bg: #241a1d;
+        }
+
+        [dir="rtl"] {
+            --sans: "Noto Kufi Arabic", "DM Sans", sans-serif;
+        }
+
+        [dir="rtl"] .logo,
+        [dir="rtl"] .hero h1,
+        [dir="rtl"] .section-heading h2,
+        [dir="rtl"] .story-copy h2,
+        [dir="rtl"] .contact-section h2,
+        [dir="rtl"] .quote-section > p,
+        [dir="rtl"] .detail-title,
+        [dir="rtl"] .drawer-head h3,
+        [dir="rtl"] .checkout-title,
+        [dir="rtl"] .checkout-summary h3,
+        [dir="rtl"] .admin-top h1,
+        [dir="rtl"] .admin-card h3,
+        [dir="rtl"] .admin-login-box h2 {
+            font-family: "Amiri", "Noto Kufi Arabic", serif;
         }
 
         * {
@@ -92,7 +117,7 @@
         input:focus-visible,
         select:focus-visible,
         textarea:focus-visible {
-            outline: 2px solid var(--gold);
+            outline: 2px solid var(--maroon);
             outline-offset: 4px;
         }
 
@@ -136,7 +161,7 @@
         }
 
         .loader-mark span {
-            color: var(--gold);
+            color: var(--maroon);
         }
 
         .loader-bar {
@@ -151,7 +176,7 @@
             display: block;
             width: 40%;
             height: 100%;
-            background: var(--gold);
+            background: var(--maroon);
             animation: loadSlide 1s infinite ease-in-out;
         }
 
@@ -166,7 +191,7 @@
         }
 
         .announcement {
-            background: var(--ink);
+            background: var(--maroon);
             color: var(--paper);
             text-align: center;
             padding: 9px 14px;
@@ -197,7 +222,7 @@
 
         .site-header.scrolled {
             height: 74px;
-            box-shadow: 0 6px 25px #1919160d;
+            box-shadow: 0 6px 25px #2b1a200d;
         }
 
         .logo {
@@ -215,7 +240,7 @@
         }
 
         .logo span {
-            color: var(--gold);
+            color: var(--maroon);
             display: inline;
         }
 
@@ -243,7 +268,7 @@
             content: "";
             height: 1px;
             width: 0;
-            background: var(--gold);
+            background: var(--maroon);
             position: absolute;
             left: 0;
             bottom: -7px;
@@ -264,6 +289,25 @@
             gap: 14px;
         }
 
+        .lang-toggle {
+            height: 34px;
+            padding: 0 12px;
+            border-radius: 20px;
+            border: 1px solid var(--line);
+            background: transparent;
+            color: var(--ink);
+            display: grid;
+            place-items: center;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: .5px;
+            transition: border-color .25s, background .25s;
+        }
+
+        .lang-toggle:hover {
+            border-color: var(--maroon);
+        }
+
         .theme-toggle {
             width: 34px;
             height: 34px;
@@ -278,7 +322,7 @@
         }
 
         .theme-toggle:hover {
-            border-color: var(--gold);
+            border-color: var(--maroon);
         }
 
         .header-cart {
@@ -299,7 +343,7 @@
             height: 25px;
             border-radius: 50%;
             color: var(--paper);
-            background: var(--ink);
+            background: var(--maroon);
             font-size: 10px;
         }
 
@@ -317,7 +361,7 @@
             margin: auto;
             padding: 55px 5% 65px;
             display: grid;
-            grid-template-columns: .9fr 1.1fr;
+            grid-template-columns: 1.1fr .9fr;
             gap: 8%;
             align-items: center;
         }
@@ -338,7 +382,7 @@
             display: inline-block;
             width: 25px;
             height: 1px;
-            background: var(--gold);
+            background: var(--maroon);
             vertical-align: middle;
             margin-right: 8px;
         }
@@ -352,7 +396,7 @@
         }
 
         .hero h1 span {
-            color: var(--gold);
+            color: var(--maroon);
         }
 
         .hero-description {
@@ -385,16 +429,16 @@
         }
 
         .btn-dark {
-            background: var(--ink);
+            background: var(--maroon);
             color: var(--paper);
         }
 
         .btn-dark:hover {
-            background: #38372f;
+            background: var(--maroon-dark);
         }
 
         [data-theme="dark"] .btn-dark:hover {
-            background: #d4ab68;
+            background: var(--gold);
             color: #111110;
         }
 
@@ -414,115 +458,65 @@
         }
 
         .hero-note span:first-child {
-            color: var(--gold);
+            color: var(--maroon);
         }
 
         .hero-visual {
-            height: 475px;
             position: relative;
             animation: imageIn 1s .1s both;
-            background: var(--card-bg);
-            overflow: hidden;
-        }
-
-        .hero-slider {
-            position: absolute;
-            inset: 0;
-        }
-
-        .hero-slide {
-            position: absolute;
-            inset: 0;
-            opacity: 0;
-            transition: opacity .8s ease;
-        }
-
-        .hero-slide.active {
-            opacity: 1;
-        }
-
-        .hero-slide img {
-            height: 100%;
-            object-position: center 35%;
-        }
-
-        .hero-nav {
-            position: absolute;
-            bottom: 16px;
-            right: 16px;
-            z-index: 3;
             display: flex;
-            gap: 8px;
+            flex-direction: column;
+            justify-content: center;
+            gap: 18px;
+            padding: 30px 0;
         }
 
-        .hero-nav button {
-            width: 36px;
-            height: 36px;
+        .hero-feature-card {
+            background: var(--cream);
+            border: 1px solid var(--line);
+            padding: 22px;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            transition: transform .3s, box-shadow .3s, border-color .3s;
+        }
+
+        .hero-feature-card:hover {
+            transform: translateX(6px);
+            border-color: var(--maroon);
+            box-shadow: 0 10px 30px #6e1e2b12;
+        }
+
+        .hero-feature-icon {
+            width: 52px;
+            height: 52px;
             border-radius: 50%;
-            border: 0;
-            background: rgba(255, 254, 250, .92);
-            color: #191916;
-            font-size: 15px;
+            background: var(--maroon);
+            color: white;
             display: grid;
             place-items: center;
-            transition: background .25s, color .25s;
-        }
-
-        .hero-nav button:hover {
-            background: var(--gold);
-            color: white;
-        }
-
-        .hero-dots {
-            position: absolute;
-            bottom: 22px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 3;
-            display: flex;
-            gap: 7px;
-        }
-
-        .hero-dots button {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            border: 0;
-            background: rgba(255, 255, 255, .5);
-            padding: 0;
-            transition: background .25s, width .25s;
-        }
-
-        .hero-dots button.active {
-            background: var(--gold);
-            width: 20px;
-            border-radius: 4px;
-        }
-
-        .hero-stamp {
-            position: absolute;
-            bottom: 35px;
-            left: -28px;
-            z-index: 4;
-            width: 110px;
-            height: 110px;
-            border-radius: 50%;
-            background: var(--gold);
-            color: white;
-            display: grid;
-            place-content: center;
-            text-align: center;
+            font-size: 22px;
+            flex-shrink: 0;
             font-family: var(--serif);
-            font-size: 13px;
-            line-height: 1.5;
-            transform: rotate(-10deg);
-            box-shadow: 0 8px 25px #00000015;
+        }
+
+        .hero-feature-text h3 {
+            font-family: var(--serif);
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+
+        .hero-feature-text p {
+            font-size: 11px;
+            color: var(--muted);
+            line-height: 1.6;
         }
 
         .image-caption {
             position: absolute;
             right: 0;
-            top: -25px;
+            top: 0;
             z-index: 4;
             color: var(--muted);
             font-size: 9px;
@@ -575,7 +569,7 @@
         .section-heading h2 em,
         .story-copy h2 em,
         .contact-section h2 em {
-            color: var(--gold);
+            color: var(--maroon);
             font-weight: 500;
         }
 
@@ -714,9 +708,9 @@
 
         .filter-btn:hover,
         .filter-btn.active {
-            background: var(--ink);
+            background: var(--maroon);
             color: var(--paper);
-            border-color: var(--ink);
+            border-color: var(--maroon);
         }
 
         .results-count {
@@ -768,7 +762,7 @@
         }
 
         .product-badge.discount {
-            background: var(--gold);
+            background: var(--maroon);
             color: white;
             left: auto;
             right: 12px;
@@ -780,8 +774,8 @@
             right: 10px;
             bottom: 10px;
             min-height: 42px;
-            background: rgba(255, 254, 250, .95);
-            color: #191916;
+            background: rgba(255, 253, 253, .95);
+            color: #2b1a20;
             border: 0;
             font-size: 10px;
             font-weight: 700;
@@ -798,7 +792,7 @@
         }
 
         .quick-add:hover {
-            background: var(--gold);
+            background: var(--maroon);
             color: white;
         }
 
@@ -841,6 +835,11 @@
             font-weight: 400;
             font-size: 10px;
             margin-left: 5px;
+        }
+
+        [dir="rtl"] .product-price del {
+            margin-left: 0;
+            margin-right: 5px;
         }
 
         .product-color {
@@ -897,7 +896,7 @@
             display: inline-flex;
             gap: 16px;
             align-items: center;
-            border-bottom: 1px solid var(--gold);
+            border-bottom: 1px solid var(--maroon);
             padding-bottom: 7px;
             font-size: 11px;
             font-weight: 600;
@@ -909,7 +908,7 @@
         }
 
         .text-link span {
-            color: var(--gold);
+            color: var(--maroon);
         }
 
         .quote-section {
@@ -921,7 +920,7 @@
         .quote-mark {
             font-family: var(--serif);
             font-size: 70px;
-            color: var(--gold);
+            color: var(--maroon);
             line-height: 1;
         }
 
@@ -939,30 +938,34 @@
         .contact-section {
             text-align: center;
             padding: 85px 20px;
-            background: var(--ink);
+            background: var(--maroon);
             color: var(--paper);
         }
 
         [data-theme="dark"] .contact-section {
-            background: #1a1a18;
+            background: var(--maroon-dark);
         }
 
         .contact-section .eyebrow {
-            color: var(--muted);
+            color: rgba(255, 255, 255, .6);
         }
 
         .contact-section h2 {
             margin: 15px 0 20px;
         }
 
+        .contact-section h2 em {
+            color: var(--gold);
+        }
+
         .contact-section>p:not(.eyebrow) {
-            color: var(--muted);
+            color: rgba(255, 255, 255, .7);
             font-size: 12px;
             margin-bottom: 25px;
         }
 
         .btn-light {
-            color: var(--ink);
+            color: var(--maroon);
             background: var(--paper);
         }
 
@@ -979,12 +982,16 @@
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 20px;
-            background: #11110f;
-            color: #aaa79e;
+            background: var(--maroon-dark);
+            color: #d8c4c8;
         }
 
         .footer-logo {
             color: white;
+        }
+
+        .footer-logo span {
+            color: var(--gold);
         }
 
         .footer p {
@@ -999,7 +1006,7 @@
             transform: translate(-50%, 20px);
             opacity: 0;
             pointer-events: none;
-            background: var(--ink);
+            background: var(--maroon);
             color: var(--paper);
             padding: 13px 22px;
             font-size: 11px;
@@ -1058,6 +1065,14 @@
             display: flex;
             flex-direction: column;
             border-left: 1px solid var(--line);
+        }
+
+        [dir="rtl"] .cart-drawer {
+            right: auto;
+            left: 0;
+            transform: translateX(-100%);
+            border-left: 0;
+            border-right: 1px solid var(--line);
         }
 
         .cart-drawer.open {
@@ -1150,6 +1165,10 @@
             text-align: right;
         }
 
+        [dir="rtl"] .drawer-item-end {
+            text-align: left;
+        }
+
         .drawer-remove {
             margin-top: 8px;
             color: var(--muted);
@@ -1219,6 +1238,11 @@
             transition: opacity .3s, visibility .3s, transform .3s, background .25s;
         }
 
+        [dir="rtl"] .back-top {
+            left: auto;
+            right: 22px;
+        }
+
         .back-top.show {
             opacity: 1;
             visibility: visible;
@@ -1226,9 +1250,9 @@
         }
 
         .back-top:hover {
-            background: var(--gold);
+            background: var(--maroon);
             color: white;
-            border-color: var(--gold);
+            border-color: var(--maroon);
         }
 
         .product-page {
@@ -1272,7 +1296,7 @@
         }
 
         .back-btn span {
-            color: var(--gold);
+            color: var(--maroon);
             font-size: 16px;
         }
 
@@ -1329,7 +1353,7 @@
         }
 
         .gallery-thumbs button.active {
-            border-color: var(--gold);
+            border-color: var(--maroon);
         }
 
         .gallery-thumbs img {
@@ -1370,6 +1394,11 @@
             color: var(--muted);
             font-weight: 400;
             margin-left: 8px;
+        }
+
+        [dir="rtl"] .detail-price del {
+            margin-left: 0;
+            margin-right: 8px;
         }
 
         .detail-desc {
@@ -1416,13 +1445,13 @@
         }
 
         .size-option:hover {
-            border-color: var(--gold);
+            border-color: var(--maroon);
         }
 
         .size-option.active {
-            background: var(--ink);
+            background: var(--maroon);
             color: var(--paper);
-            border-color: var(--ink);
+            border-color: var(--maroon);
         }
 
         .size-option:disabled {
@@ -1448,7 +1477,7 @@
         }
 
         .color-option.active {
-            border-color: var(--gold);
+            border-color: var(--maroon);
         }
 
         .stock-status {
@@ -1622,7 +1651,7 @@
         .field input:focus,
         .field select:focus,
         .field textarea:focus {
-            border-color: var(--gold);
+            border-color: var(--maroon);
             outline: none;
         }
 
@@ -1687,7 +1716,7 @@
             align-items: center;
             gap: 10px;
             padding: 14px;
-            border: 1px solid var(--gold);
+            border: 1px solid var(--maroon);
             background: var(--paper);
             font-size: 12px;
             font-weight: 600;
@@ -1701,7 +1730,7 @@
             width: 20px;
             height: 20px;
             border-radius: 50%;
-            background: var(--gold);
+            background: var(--maroon);
             color: white;
             font-size: 11px;
             flex-shrink: 0;
@@ -1817,7 +1846,7 @@
 
         .admin-tab.active {
             color: var(--ink);
-            border-bottom-color: var(--gold);
+            border-bottom-color: var(--maroon);
         }
 
         .admin-panel {
@@ -1920,9 +1949,9 @@
         }
 
         .admin-mini-btn:hover {
-            background: var(--ink);
+            background: var(--maroon);
             color: var(--paper);
-            border-color: var(--ink);
+            border-color: var(--maroon);
         }
 
         .admin-mini-btn.danger {
@@ -2077,7 +2106,7 @@
         }
 
         .admin-upload-zone:hover {
-            border-color: var(--gold);
+            border-color: var(--maroon);
         }
 
         .admin-upload-zone p {
@@ -2130,7 +2159,7 @@
                 width: 6px;
                 height: 6px;
                 border-radius: 50%;
-                background: var(--gold);
+                background: var(--maroon);
                 pointer-events: none;
                 z-index: 9999;
                 transform: translate(-50%, -50%);
@@ -2145,7 +2174,7 @@
                 width: 34px;
                 height: 34px;
                 border-radius: 50%;
-                border: 1px solid var(--gold);
+                border: 1px solid var(--maroon);
                 pointer-events: none;
                 z-index: 9998;
                 transform: translate(-50%, -50%);
@@ -2168,7 +2197,7 @@
             }
 
             .hero-visual {
-                height: 400px;
+                padding: 10px 0;
             }
 
             .hero h1 {
@@ -2225,7 +2254,7 @@
             .site-header.scrolled {
                 height: 70px;
                 padding: 0 5%;
-                gap: 12px;
+                gap: 8px;
             }
 
             .logo {
@@ -2243,9 +2272,25 @@
                 margin-left: 2px;
             }
 
+            [dir="rtl"] .menu-toggle {
+                margin-left: 0;
+                margin-right: 2px;
+            }
+
             .header-actions {
                 margin-left: auto;
-                gap: 8px;
+                gap: 6px;
+            }
+
+            [dir="rtl"] .header-actions {
+                margin-left: 0;
+                margin-right: auto;
+            }
+
+            .lang-toggle {
+                height: 30px;
+                padding: 0 8px;
+                font-size: 10px;
             }
 
             .theme-toggle {
@@ -2256,6 +2301,7 @@
 
             .header-cart {
                 font-size: 11px;
+                gap: 5px;
             }
 
             .nav-links {
@@ -2307,16 +2353,7 @@
             }
 
             .hero-visual {
-                height: min(110vw, 430px);
-                margin-left: 10px;
-            }
-
-            .hero-stamp {
-                width: 88px;
-                height: 88px;
-                font-size: 11px;
-                left: -18px;
-                bottom: 25px;
+                padding: 0;
             }
 
             .trust-strip {
@@ -2447,6 +2484,11 @@
                 height: 40px;
             }
 
+            [dir="rtl"] .back-top {
+                right: 14px;
+                left: auto;
+            }
+
             .product-page-inner {
                 padding: 20px 5% 60px;
             }
@@ -2502,25 +2544,26 @@
     <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
 
     <div class="announcement">
-        <p>MEN'S ESSENTIALS <span>—</span> DELIVERY TO ALL IRAQI PROVINCES <span>—</span> CASH ON DELIVERY</p>
+        <p data-i18n="announcement">MEN'S ESSENTIALS <span>—</span> DELIVERY TO ALL IRAQI PROVINCES <span>—</span> CASH ON DELIVERY</p>
     </div>
 
     <header class="site-header">
-        <button class="logo" id="logoHome" type="button">VEL<span>QOR</span><small>MEN'S STYLE THAT SPEAKS</small></button>
+        <button class="logo" id="logoHome" type="button">VEL<span>QOR</span><small data-i18n="logoSub">MEN'S STYLE THAT SPEAKS</small></button>
 
         <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">☰</button>
 
         <nav class="nav-links" id="navLinks">
-            <a href="#home">Home</a>
-            <a href="#shop">Shop</a>
-            <a href="#story">Our Story</a>
-            <a href="#contact">Contact</a>
+            <a href="#home" data-i18n="navHome">Home</a>
+            <a href="#shop" data-i18n="navShop">Shop</a>
+            <a href="#story" data-i18n="navStory">Our Story</a>
+            <a href="#contact" data-i18n="navContact">Contact</a>
         </nav>
 
         <div class="header-actions">
+            <button class="lang-toggle" id="langToggle" aria-label="Switch language">عربي</button>
             <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">☾</button>
             <button class="header-cart" id="cartOpen" type="button">
-                Bag <span id="cartCount">0</span>
+                <span data-i18n="bag">Bag</span> <span id="cartCount">0</span>
             </button>
         </div>
     </header>
@@ -2528,57 +2571,58 @@
     <main>
         <section class="hero" id="home">
             <div class="hero-copy reveal">
-                <p class="eyebrow"><span></span> THE MEN'S EVERYDAY COLLECTION</p>
-                <h1>Wear your<br>story<span>.</span></h1>
-                <p class="hero-description">
+                <p class="eyebrow"><span></span> <span data-i18n="heroEyebrow">THE MEN'S EVERYDAY COLLECTION</span></p>
+                <h1><span data-i18n="heroTitle1">Wear your</span><br><span data-i18n="heroTitle2">story</span><span>.</span></h1>
+                <p class="hero-description" data-i18n="heroDesc">
                     Modern menswear essentials. Timeless confidence.
                     Find the pieces that feel like you — delivered across Iraq.
                 </p>
-                <a class="btn btn-dark" href="#shop">Explore the collection <span>↗</span></a>
+                <a class="btn btn-dark" href="#shop"><span data-i18n="exploreCollection">Explore the collection</span> <span>↗</span></a>
                 <div class="hero-note">
                     <span>01 / 03</span>
-                    <span>MADE FOR YOUR EVERYDAY</span>
+                    <span data-i18n="heroNote">MADE FOR YOUR EVERYDAY</span>
                 </div>
             </div>
 
             <div class="hero-visual reveal">
-                <div class="hero-slider" id="heroSlider">
-                    <div class="hero-slide active">
-                        <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1100&q=85"
-                            alt="Contemporary men's fashion editorial">
-                    </div>
-                    <div class="hero-slide">
-                        <img src="https://images.unsplash.com/photo-1490578474895-699cd4e2cf59?auto=format&fit=crop&w=1100&q=85"
-                            alt="Men's street style look">
-                    </div>
-                    <div class="hero-slide">
-                        <img src="https://images.unsplash.com/photo-1488161628813-04466f872be2?auto=format&fit=crop&w=1100&q=85"
-                            alt="Modern menswear portrait">
+                <div class="hero-feature-card">
+                    <div class="hero-feature-icon">✳</div>
+                    <div class="hero-feature-text">
+                        <h3 data-i18n="feat1Title">Curated Essentials</h3>
+                        <p data-i18n="feat1Desc">Handpicked pieces for the modern man.</p>
                     </div>
                 </div>
-                <div class="hero-nav">
-                    <button type="button" id="heroPrev" aria-label="Previous image">‹</button>
-                    <button type="button" id="heroNext" aria-label="Next image">›</button>
+                <div class="hero-feature-card">
+                    <div class="hero-feature-icon">↗</div>
+                    <div class="hero-feature-text">
+                        <h3 data-i18n="feat2Title">Delivery All Iraq</h3>
+                        <p data-i18n="feat2Desc">From Baghdad to Basra, we deliver to your door.</p>
+                    </div>
                 </div>
-                <div class="hero-dots" id="heroDots" aria-label="Hero slides"></div>
-                <div class="hero-stamp">YOUR STYLE.<br>YOUR RULES.</div>
-                <div class="image-caption">THE NEW STANDARD — 2026</div>
+                <div class="hero-feature-card">
+                    <div class="hero-feature-icon">✓</div>
+                    <div class="hero-feature-text">
+                        <h3 data-i18n="feat3Title">Cash on Delivery</h3>
+                        <p data-i18n="feat3Desc">Pay when you receive your order. Simple.</p>
+                    </div>
+                </div>
+                <div class="image-caption" data-i18n="imageCaption">THE NEW STANDARD — 2026</div>
             </div>
         </section>
 
         <section class="trust-strip">
-            <span>✳ CURATED MEN'S ESSENTIALS</span>
-            <span>✳ DELIVERY ALL IRAQ</span>
-            <span>✳ CASH ON DELIVERY</span>
+            <span data-i18n="trust1">✳ CURATED MEN'S ESSENTIALS</span>
+            <span data-i18n="trust2">✳ DELIVERY ALL IRAQ</span>
+            <span data-i18n="trust3">✳ CASH ON DELIVERY</span>
         </section>
 
         <section class="shop-section section-pad" id="shop">
             <div class="section-heading reveal">
                 <div>
-                    <p class="eyebrow">THE VELQOR EDIT</p>
-                    <h2>Find your <em>fit.</em></h2>
+                    <p class="eyebrow" data-i18n="shopEyebrow">THE VELQOR EDIT</p>
+                    <h2><span data-i18n="shopTitle1">Find your</span> <em data-i18n="shopTitle2">fit.</em></h2>
                 </div>
-                <p class="section-subtitle">Men's pieces you'll reach for again and again.</p>
+                <p class="section-subtitle" data-i18n="shopSub">Men's pieces you'll reach for again and again.</p>
             </div>
 
             <div class="shop-tools reveal">
@@ -2586,33 +2630,33 @@
                     <label class="search-box">
                         <span aria-hidden="true">⌕</span>
                         <input type="search" id="searchInput" placeholder="Search the collection..."
-                            aria-label="Search products" autocomplete="off">
+                            aria-label="Search products" autocomplete="off" data-i18n-placeholder="searchPlaceholder">
                     </label>
                     <div class="suggestions" id="suggestions" role="listbox" aria-label="Search suggestions"></div>
                 </div>
 
                 <label class="sort-box">
-                    <span>Sort:</span>
+                    <span data-i18n="sortLabel">Sort:</span>
                     <select id="sortSelect" aria-label="Sort products">
-                        <option value="featured">Featured</option>
-                        <option value="low">Price: Low to High</option>
-                        <option value="high">Price: High to Low</option>
-                        <option value="name">Name: A–Z</option>
+                        <option value="featured" data-i18n="sortFeatured">Featured</option>
+                        <option value="low" data-i18n="sortLow">Price: Low to High</option>
+                        <option value="high" data-i18n="sortHigh">Price: High to Low</option>
+                        <option value="name" data-i18n="sortName">Name: A–Z</option>
                     </select>
                 </label>
             </div>
 
             <div class="filters reveal" id="filters" aria-label="Product categories">
-                <button class="filter-btn active" data-filter="all" aria-pressed="true">All pieces</button>
-                <button class="filter-btn" data-filter="tops" aria-pressed="false">Tops</button>
-                <button class="filter-btn" data-filter="bottoms" aria-pressed="false">Bottoms</button>
-                <button class="filter-btn" data-filter="outerwear" aria-pressed="false">Outerwear</button>
-                <button class="filter-btn" data-filter="accessories" aria-pressed="false">Accessories</button>
+                <button class="filter-btn active" data-filter="all" aria-pressed="true" data-i18n="filterAll">All pieces</button>
+                <button class="filter-btn" data-filter="tops" aria-pressed="false" data-i18n="filterTops">Tops</button>
+                <button class="filter-btn" data-filter="bottoms" aria-pressed="false" data-i18n="filterBottoms">Bottoms</button>
+                <button class="filter-btn" data-filter="outerwear" aria-pressed="false" data-i18n="filterOuterwear">Outerwear</button>
+                <button class="filter-btn" data-filter="accessories" aria-pressed="false" data-i18n="filterAccessories">Accessories</button>
             </div>
 
             <p class="results-count" id="resultsCount" aria-live="polite"></p>
             <div class="product-grid" id="productGrid"></div>
-            <p class="empty-state" id="emptyState" hidden>No pieces found. Try another search.</p>
+            <p class="empty-state" id="emptyState" hidden data-i18n="emptyState">No pieces found. Try another search.</p>
         </section>
 
         <section class="story-section" id="story">
@@ -2621,63 +2665,63 @@
                     alt="Men exploring their personal fashion styles" loading="lazy">
             </div>
             <div class="story-copy reveal">
-                <p class="eyebrow">MORE THAN WHAT YOU WEAR</p>
-                <h2>Style is personal.<br><em>Make it yours.</em></h2>
-                <p>
+                <p class="eyebrow" data-i18n="storyEyebrow">MORE THAN WHAT YOU WEAR</p>
+                <h2><span data-i18n="storyTitle1">Style is personal.</span><br><em data-i18n="storyTitle2">Make it yours.</em></h2>
+                <p data-i18n="storyDesc">
                     VELQOR is a men's fashion concept built around self-expression,
                     everyday comfort, and pieces that work with your life.
                     Less noise. More you.
                 </p>
-                <a href="#shop" class="text-link">Find your next favourite <span>↗</span></a>
+                <a href="#shop" class="text-link" data-i18n="storyLink">Find your next favourite <span>↗</span></a>
             </div>
         </section>
 
         <section class="quote-section">
             <span class="quote-mark">“</span>
-            <p>Confidence is the best thing<br>you can put on.</p>
-            <span class="eyebrow">THE VELQOR MINDSET</span>
+            <p><span data-i18n="quoteLine1">Confidence is the best thing</span><br><span data-i18n="quoteLine2">you can put on.</span></p>
+            <span class="eyebrow" data-i18n="quoteEyebrow">THE VELQOR MINDSET</span>
         </section>
 
         <section class="contact-section" id="contact">
-            <p class="eyebrow">LET'S TALK STYLE</p>
-            <h2>Good style.<br><em>Good conversation.</em></h2>
-            <p>Questions about an item? Get in touch with our store.</p>
-            <button class="btn btn-light" type="button" id="contactBagBtn">Build your order <span>↗</span></button>
+            <p class="eyebrow" data-i18n="contactEyebrow">LET'S TALK STYLE</p>
+            <h2><span data-i18n="contactTitle1">Good style.</span><br><em data-i18n="contactTitle2">Good conversation.</em></h2>
+            <p data-i18n="contactDesc">Questions about an item? Get in touch with our store.</p>
+            <button class="btn btn-light" type="button" id="contactBagBtn"><span data-i18n="buildOrder">Build your order</span> <span>↗</span></button>
         </section>
     </main>
 
     <footer class="footer">
-        <button class="logo footer-logo" type="button" id="footerLogo">VEL<span>QOR</span><small>MEN'S STYLE THAT SPEAKS</small></button>
-        <p>Men's fashion store for Iraq. Cash on delivery, all provinces.</p>
-        <p>© <span id="currentYear"></span> VELQOR. <button type="button" id="adminOpen" style="background:transparent;border:0;color:inherit;font-size:10px;text-decoration:underline;padding:0;">Admin</button></p>
+        <button class="logo footer-logo" type="button" id="footerLogo">VEL<span>QOR</span><small data-i18n="logoSub">MEN'S STYLE THAT SPEAKS</small></button>
+        <p data-i18n="footerDesc">Men's fashion store for Iraq. Cash on delivery, all provinces.</p>
+        <p>© <span id="currentYear"></span> VELQOR. <button type="button" id="adminOpen" style="background:transparent;border:0;color:inherit;font-size:10px;text-decoration:underline;padding:0;" data-i18n="adminLabel">Admin</button></p>
     </footer>
 
     <div class="cart-overlay" id="cartOverlay"></div>
 
     <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping bag" aria-hidden="true">
         <div class="drawer-head">
-            <h3>Your Bag</h3>
+            <h3 data-i18n="yourBag">Your Bag</h3>
             <button class="drawer-close" id="drawerClose" type="button" aria-label="Close bag">×</button>
         </div>
         <div class="drawer-body" id="drawerBody" aria-live="polite"></div>
         <div class="drawer-foot">
             <div class="drawer-row">
-                <span>Subtotal</span>
+                <span data-i18n="subtotal">Subtotal</span>
                 <span id="drawerSubtotal">0 IQD</span>
             </div>
             <div class="drawer-row total">
-                <span>Total</span>
+                <span data-i18n="total">Total</span>
                 <span id="drawerTotal">0 IQD</span>
             </div>
-            <button class="btn btn-dark" id="drawerCheckout" type="button">Checkout — Cash on Delivery <span>↗</span></button>
-            <p class="drawer-note">Delivery to all Iraqi provinces. Payment on delivery.</p>
+            <button class="btn btn-dark" id="drawerCheckout" type="button"><span data-i18n="checkoutCOD">Checkout — Cash on Delivery</span> <span>↗</span></button>
+            <p class="drawer-note" data-i18n="drawerNote">Delivery to all Iraqi provinces. Payment on delivery.</p>
         </div>
     </aside>
 
     <div class="product-page" id="productPage" aria-hidden="true">
         <div class="product-page-inner">
             <div class="product-page-bar">
-                <button class="back-btn" type="button" id="productBack"><span>←</span> Back to shop</button>
+                <button class="back-btn" type="button" id="productBack"><span>←</span> <span data-i18n="backToShop">Back to shop</span></button>
                 <button class="product-page-close" type="button" id="productClose" aria-label="Close product">×</button>
             </div>
             <div class="product-detail" id="productDetail"></div>
@@ -2687,27 +2731,27 @@
     <div class="checkout-page" id="checkoutPage" aria-hidden="true">
         <div class="checkout-inner">
             <div class="checkout-bar">
-                <button class="back-btn" type="button" id="checkoutBack"><span>←</span> Back</button>
+                <button class="back-btn" type="button" id="checkoutBack"><span>←</span> <span data-i18n="back">Back</span></button>
                 <button class="product-page-close" type="button" id="checkoutClose" aria-label="Close checkout">×</button>
             </div>
-            <h2 class="checkout-title">Checkout</h2>
-            <p class="checkout-sub">Cash on delivery. Delivery to all Iraqi provinces.</p>
+            <h2 class="checkout-title" data-i18n="checkoutTitle">Checkout</h2>
+            <p class="checkout-sub" data-i18n="checkoutSub">Cash on delivery. Delivery to all Iraqi provinces.</p>
             <div class="checkout-grid">
                 <form class="checkout-form" id="checkoutForm" novalidate>
                     <div class="field">
-                        <label for="coName">Full Name</label>
-                        <input type="text" id="coName" name="name" placeholder="Your full name" autocomplete="name" required>
-                        <span class="field-hint">Please enter your name.</span>
+                        <label for="coName" data-i18n="coNameLabel">Full Name</label>
+                        <input type="text" id="coName" name="name" placeholder="Your full name" autocomplete="name" required data-i18n-placeholder="coNamePlaceholder">
+                        <span class="field-hint" data-i18n="coNameHint">Please enter your name.</span>
                     </div>
                     <div class="field">
-                        <label for="coPhone">Phone Number</label>
-                        <input type="tel" id="coPhone" name="phone" placeholder="07XX XXX XXXX" autocomplete="tel" required>
-                        <span class="field-hint">Please enter a valid Iraqi phone number.</span>
+                        <label for="coPhone" data-i18n="coPhoneLabel">Phone Number</label>
+                        <input type="tel" id="coPhone" name="phone" placeholder="07XX XXX XXXX" autocomplete="tel" required data-i18n-placeholder="coPhonePlaceholder">
+                        <span class="field-hint" data-i18n="coPhoneHint">Please enter a valid Iraqi phone number.</span>
                     </div>
                     <div class="field">
-                        <label for="coProvince">Province</label>
+                        <label for="coProvince" data-i18n="coProvinceLabel">Province</label>
                         <select id="coProvince" name="province" required>
-                            <option value="">Select your province</option>
+                            <option value="" data-i18n="coProvincePlaceholder">Select your province</option>
                             <option>Baghdad</option>
                             <option>Basra</option>
                             <option>Nineveh</option>
@@ -2728,33 +2772,33 @@
                             <option>Duhok</option>
                             <option>Halabja</option>
                         </select>
-                        <span class="field-hint">Please select your province.</span>
+                        <span class="field-hint" data-i18n="coProvinceHint">Please select your province.</span>
                     </div>
                     <div class="field">
-                        <label for="coCity">City / Area</label>
-                        <input type="text" id="coCity" name="city" placeholder="City or area" required>
-                        <span class="field-hint">Please enter your city or area.</span>
+                        <label for="coCity" data-i18n="coCityLabel">City / Area</label>
+                        <input type="text" id="coCity" name="city" placeholder="City or area" required data-i18n-placeholder="coCityPlaceholder">
+                        <span class="field-hint" data-i18n="coCityHint">Please enter your city or area.</span>
                     </div>
                     <div class="field">
-                        <label for="coAddress">Full Address</label>
-                        <textarea id="coAddress" name="address" rows="3" placeholder="Street, landmark, house number" required></textarea>
-                        <span class="field-hint">Please enter your full address.</span>
+                        <label for="coAddress" data-i18n="coAddressLabel">Full Address</label>
+                        <textarea id="coAddress" name="address" rows="3" placeholder="Street, landmark, house number" required data-i18n-placeholder="coAddressPlaceholder"></textarea>
+                        <span class="field-hint" data-i18n="coAddressHint">Please enter your full address.</span>
                     </div>
                     <div class="field">
-                        <label for="coNotes">Notes (optional)</label>
-                        <textarea id="coNotes" name="notes" rows="2" placeholder="Any delivery notes"></textarea>
+                        <label for="coNotes" data-i18n="coNotesLabel">Notes (optional)</label>
+                        <textarea id="coNotes" name="notes" rows="2" placeholder="Any delivery notes" data-i18n-placeholder="coNotesPlaceholder"></textarea>
                     </div>
                 </form>
                 <aside class="checkout-summary">
-                    <h3>Order Summary</h3>
+                    <h3 data-i18n="orderSummary">Order Summary</h3>
                     <div id="checkoutLines"></div>
                     <div class="summary-total">
-                        <span>Total</span>
+                        <span data-i18n="total">Total</span>
                         <span id="checkoutTotal">0 IQD</span>
                     </div>
-                    <div class="pay-method">Cash on Delivery</div>
-                    <button class="btn btn-dark" type="button" id="checkoutSubmit">Place Order <span>↗</span></button>
-                    <p class="drawer-note">Your order will be sent to the store on WhatsApp for confirmation.</p>
+                    <div class="pay-method" data-i18n="payMethod">Cash on Delivery</div>
+                    <button class="btn btn-dark" type="button" id="checkoutSubmit"><span data-i18n="placeOrder">Place Order</span> <span>↗</span></button>
+                    <p class="drawer-note" data-i18n="checkoutNote">Your order will be sent to the store on WhatsApp for confirmation.</p>
                 </aside>
             </div>
         </div>
@@ -2763,8 +2807,8 @@
     <div class="admin-page" id="adminPage" aria-hidden="true">
         <div class="admin-login">
             <div class="admin-login-box">
-                <h2>Admin Access</h2>
-                <p>Enter your admin credentials to manage the store.</p>
+                <h2 data-i18n="adminLoginTitle">Admin Access</h2>
+                <p data-i18n="adminLoginSub">Enter your admin credentials to manage the store.</p>
                 <div class="field">
                     <label for="adminEmail">Email</label>
                     <input type="email" id="adminEmail" placeholder="admin@velqor.com" autocomplete="username">
@@ -2773,105 +2817,105 @@
                     <label for="adminPassword">Password</label>
                     <input type="password" id="adminPassword" placeholder="Password" autocomplete="current-password">
                 </div>
-                <button class="btn btn-dark" type="button" id="adminLoginBtn" style="width:100%;gap:12px;">Login <span>↗</span></button>
-                <button class="clear-btn" type="button" id="adminClose" style="width:100%;margin-top:12px;background:transparent;border:0;color:var(--muted);font-size:10px;text-decoration:underline;padding:8px;">Back to store</button>
+                <button class="btn btn-dark" type="button" id="adminLoginBtn" style="width:100%;gap:12px;"><span data-i18n="adminLoginBtn">Login</span> <span>↗</span></button>
+                <button class="clear-btn" type="button" id="adminClose" style="width:100%;margin-top:12px;background:transparent;border:0;color:var(--muted);font-size:10px;text-decoration:underline;padding:8px;" data-i18n="adminBack">Back to store</button>
             </div>
         </div>
         <div class="admin-shell">
             <div class="admin-top">
                 <div>
                     <h1>VELQOR Admin</h1>
-                    <p style="font-size:11px;color:var(--muted);">Manage products, orders, and store settings.</p>
+                    <p style="font-size:11px;color:var(--muted);" data-i18n="adminSub">Manage products, orders, and store settings.</p>
                 </div>
                 <div class="admin-top-actions">
-                    <button class="admin-mini-btn" type="button" id="adminViewStore">View Store</button>
-                    <button class="admin-mini-btn danger" type="button" id="adminLogout">Logout</button>
+                    <button class="admin-mini-btn" type="button" id="adminViewStore" data-i18n="adminViewStore">View Store</button>
+                    <button class="admin-mini-btn danger" type="button" id="adminLogout" data-i18n="adminLogout">Logout</button>
                 </div>
             </div>
 
             <div class="admin-tabs" id="adminTabs">
-                <button class="admin-tab active" type="button" data-tab="products">Products</button>
-                <button class="admin-tab" type="button" data-tab="orders">Orders</button>
+                <button class="admin-tab active" type="button" data-tab="products" data-i18n="adminTabProducts">Products</button>
+                <button class="admin-tab" type="button" data-tab="orders" data-i18n="adminTabOrders">Orders</button>
             </div>
 
             <div class="admin-panel active" id="panel-products">
                 <div class="admin-card">
-                    <h3 id="productFormTitle">Add New Product</h3>
+                    <h3 id="productFormTitle" data-i18n="addProductTitle">Add New Product</h3>
                     <form class="admin-form" id="productForm">
                         <input type="hidden" id="pfId">
                         <div class="field">
-                            <label for="pfName">Product Name</label>
+                            <label for="pfName" data-i18n="pfNameLabel">Product Name</label>
                             <input type="text" id="pfName" required>
                         </div>
                         <div class="field">
-                            <label for="pfSku">SKU / Product ID</label>
+                            <label for="pfSku" data-i18n="pfSkuLabel">SKU / Product ID</label>
                             <input type="text" id="pfSku" placeholder="VQ-1001">
                         </div>
                         <div class="field">
-                            <label for="pfCategory">Category</label>
+                            <label for="pfCategory" data-i18n="pfCategoryLabel">Category</label>
                             <select id="pfCategory">
-                                <option value="tops">Tops</option>
-                                <option value="bottoms">Bottoms</option>
-                                <option value="outerwear">Outerwear</option>
-                                <option value="accessories">Accessories</option>
+                                <option value="tops" data-i18n="filterTops">Tops</option>
+                                <option value="bottoms" data-i18n="filterBottoms">Bottoms</option>
+                                <option value="outerwear" data-i18n="filterOuterwear">Outerwear</option>
+                                <option value="accessories" data-i18n="filterAccessories">Accessories</option>
                             </select>
                         </div>
                         <div class="field">
-                            <label for="pfBadge">Badge (optional)</label>
+                            <label for="pfBadge" data-i18n="pfBadgeLabel">Badge (optional)</label>
                             <input type="text" id="pfBadge" placeholder="NEW, BESTSELLER...">
                         </div>
                         <div class="field">
-                            <label for="pfPrice">Price (IQD)</label>
+                            <label for="pfPrice" data-i18n="pfPriceLabel">Price (IQD)</label>
                             <input type="number" id="pfPrice" min="0" step="1" required>
                         </div>
                         <div class="field">
-                            <label for="pfOldPrice">Old Price (IQD, optional)</label>
+                            <label for="pfOldPrice" data-i18n="pfOldPriceLabel">Old Price (IQD, optional)</label>
                             <input type="number" id="pfOldPrice" min="0" step="1" placeholder="0">
                         </div>
                         <div class="field full">
-                            <label for="pfDescription">Description</label>
+                            <label for="pfDescription" data-i18n="pfDescLabel">Description</label>
                             <textarea id="pfDescription" rows="3"></textarea>
                         </div>
                         <div class="field full">
-                            <label>Available Sizes</label>
+                            <label data-i18n="pfSizesLabel">Available Sizes</label>
                             <div id="pfSizesList"></div>
-                            <button type="button" class="admin-mini-btn" id="pfAddSize" style="margin-top:8px;">+ Add Size</button>
+                            <button type="button" class="admin-mini-btn" id="pfAddSize" style="margin-top:8px;" data-i18n="pfAddSize">+ Add Size</button>
                         </div>
                         <div class="field full">
-                            <label>Available Colors</label>
+                            <label data-i18n="pfColorsLabel">Available Colors</label>
                             <div id="pfColorsList"></div>
-                            <button type="button" class="admin-mini-btn" id="pfAddColor" style="margin-top:8px;">+ Add Color</button>
+                            <button type="button" class="admin-mini-btn" id="pfAddColor" style="margin-top:8px;" data-i18n="pfAddColor">+ Add Color</button>
                         </div>
                         <div class="field full">
-                            <label>Product Images</label>
+                            <label data-i18n="pfImagesLabel">Product Images</label>
                             <div class="admin-upload-zone" id="pfUploadZone">
-                                <p>Click to upload images from your device</p>
+                                <p data-i18n="pfUploadText">Click to upload images from your device</p>
                             </div>
                             <input type="file" id="pfFileInput" accept="image/*" multiple style="display:none;">
                             <div class="admin-image-grid" id="pfImagePreview"></div>
                         </div>
                         <div class="field">
-                            <label for="pfStock">Stock Status</label>
+                            <label for="pfStock" data-i18n="pfStockLabel">Stock Status</label>
                             <select id="pfStock">
-                                <option value="true">In Stock</option>
-                                <option value="false">Out of Stock</option>
+                                <option value="true" data-i18n="pfInStock">In Stock</option>
+                                <option value="false" data-i18n="pfOutStock">Out of Stock</option>
                             </select>
                         </div>
                         <div class="admin-form-actions">
-                            <button class="btn btn-dark" type="submit" id="pfSubmit" style="gap:12px;">Save Product <span>↗</span></button>
-                            <button class="admin-mini-btn" type="button" id="pfCancel" style="display:none;">Cancel Edit</button>
+                            <button class="btn btn-dark" type="submit" id="pfSubmit" style="gap:12px;"><span data-i18n="pfSave">Save Product</span> <span>↗</span></button>
+                            <button class="admin-mini-btn" type="button" id="pfCancel" style="display:none;" data-i18n="pfCancelEdit">Cancel Edit</button>
                         </div>
                     </form>
                 </div>
                 <div class="admin-card">
-                    <h3>Products (<span id="adminProductCount">0</span>)</h3>
+                    <h3><span data-i18n="adminProductsTitle">Products</span> (<span id="adminProductCount">0</span>)</h3>
                     <div class="admin-list" id="adminProductsList"></div>
                 </div>
             </div>
 
             <div class="admin-panel" id="panel-orders">
                 <div class="admin-card">
-                    <h3>Orders (<span id="adminOrderCount">0</span>)</h3>
+                    <h3><span data-i18n="adminOrdersTitle">Orders</span> (<span id="adminOrderCount">0</span>)</h3>
                     <div class="admin-orders" id="adminOrdersList"></div>
                 </div>
             </div>
@@ -2892,20 +2936,19 @@
 
         const SUPABASE_URL = "https://cyuaydncvmalblaeheja.supabase.co";
         const SUPABASE_KEY = "sb_publishable_QjO9ugfAYSWz8O-TZ8j_jQ_oVaKGtyV";
-        
+
         const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
         const WA_NUMBER_1 = "+9647773798379";
         const WA_NUMBER_2 = "+9647777895744";
         const CART_KEY = "velqor_cart_v3";
         const THEME_KEY = "velqor_theme_v1";
+        const LANG_KEY = "velqor_lang_v1";
 
         let products = [];
         let cart = [];
         let activeCategory = "all";
         let toastTimeout;
-        let heroIndex = 0;
-        let heroTimer;
         let currentProduct = null;
         let selectedSize = null;
         let selectedColor = null;
@@ -2914,63 +2957,286 @@
         let pfColors = [];
         let pfImages = [];
         let isAdmin = false;
+        let currentLang = "en";
 
-        const productGrid = document.getElementById("productGrid");
-        const searchInput = document.getElementById("searchInput");
-        const sortSelect = document.getElementById("sortSelect");
-        const filters = document.getElementById("filters");
-        const resultsCount = document.getElementById("resultsCount");
-        const emptyState = document.getElementById("emptyState");
-        const suggestions = document.getElementById("suggestions");
+        const translations = {
+            en: {
+                announcement: "MEN'S ESSENTIALS <span>—</span> DELIVERY TO ALL IRAQI PROVINCES <span>—</span> CASH ON DELIVERY",
+                logoSub: "MEN'S STYLE THAT SPEAKS",
+                navHome: "Home", navShop: "Shop", navStory: "Our Story", navContact: "Contact",
+                bag: "Bag",
+                heroEyebrow: "THE MEN'S EVERYDAY COLLECTION",
+                heroTitle1: "Wear your", heroTitle2: "story",
+                heroDesc: "Modern menswear essentials. Timeless confidence. Find the pieces that feel like you — delivered across Iraq.",
+                exploreCollection: "Explore the collection",
+                heroNote: "MADE FOR YOUR EVERYDAY",
+                feat1Title: "Curated Essentials", feat1Desc: "Handpicked pieces for the modern man.",
+                feat2Title: "Delivery All Iraq", feat2Desc: "From Baghdad to Basra, we deliver to your door.",
+                feat3Title: "Cash on Delivery", feat3Desc: "Pay when you receive your order. Simple.",
+                imageCaption: "THE NEW STANDARD — 2026",
+                trust1: "✳ CURATED MEN'S ESSENTIALS", trust2: "✳ DELIVERY ALL IRAQ", trust3: "✳ CASH ON DELIVERY",
+                shopEyebrow: "THE VELQOR EDIT", shopTitle1: "Find your", shopTitle2: "fit.",
+                shopSub: "Men's pieces you'll reach for again and again.",
+                searchPlaceholder: "Search the collection...",
+                sortLabel: "Sort:", sortFeatured: "Featured", sortLow: "Price: Low to High", sortHigh: "Price: High to Low", sortName: "Name: A–Z",
+                filterAll: "All pieces", filterTops: "Tops", filterBottoms: "Bottoms", filterOuterwear: "Outerwear", filterAccessories: "Accessories",
+                emptyState: "No pieces found. Try another search.",
+                resultsFound: "pieces found", resultPiece: "piece",
+                storyEyebrow: "MORE THAN WHAT YOU WEAR", storyTitle1: "Style is personal.", storyTitle2: "Make it yours.",
+                storyDesc: "VELQOR is a men's fashion concept built around self-expression, everyday comfort, and pieces that work with your life. Less noise. More you.",
+                storyLink: "Find your next favourite",
+                quoteLine1: "Confidence is the best thing", quoteLine2: "you can put on.",
+                quoteEyebrow: "THE VELQOR MINDSET",
+                contactEyebrow: "LET'S TALK STYLE", contactTitle1: "Good style.", contactTitle2: "Good conversation.",
+                contactDesc: "Questions about an item? Get in touch with our store.",
+                buildOrder: "Build your order",
+                footerDesc: "Men's fashion store for Iraq. Cash on delivery, all provinces.",
+                adminLabel: "Admin",
+                yourBag: "Your Bag", subtotal: "Subtotal", total: "Total",
+                checkoutCOD: "Checkout — Cash on Delivery",
+                drawerNote: "Delivery to all Iraqi provinces. Payment on delivery.",
+                backToShop: "Back to shop", back: "Back",
+                checkoutTitle: "Checkout", checkoutSub: "Cash on delivery. Delivery to all Iraqi provinces.",
+                coNameLabel: "Full Name", coNamePlaceholder: "Your full name", coNameHint: "Please enter your name.",
+                coPhoneLabel: "Phone Number", coPhonePlaceholder: "07XX XXX XXXX", coPhoneHint: "Please enter a valid Iraqi phone number.",
+                coProvinceLabel: "Province", coProvincePlaceholder: "Select your province", coProvinceHint: "Please select your province.",
+                coCityLabel: "City / Area", coCityPlaceholder: "City or area", coCityHint: "Please enter your city or area.",
+                coAddressLabel: "Full Address", coAddressPlaceholder: "Street, landmark, house number", coAddressHint: "Please enter your full address.",
+                coNotesLabel: "Notes (optional)", coNotesPlaceholder: "Any delivery notes",
+                orderSummary: "Order Summary", payMethod: "Cash on Delivery",
+                placeOrder: "Place Order", checkoutNote: "Your order will be sent to the store on WhatsApp for confirmation.",
+                adminLoginTitle: "Admin Access", adminLoginSub: "Enter your admin credentials to manage the store.",
+                adminLoginBtn: "Login", adminBack: "Back to store",
+                adminSub: "Manage products, orders, and store settings.",
+                adminViewStore: "View Store", adminLogout: "Logout",
+                adminTabProducts: "Products", adminTabOrders: "Orders",
+                addProductTitle: "Add New Product", editProductTitle: "Edit Product",
+                pfNameLabel: "Product Name", pfSkuLabel: "SKU / Product ID", pfCategoryLabel: "Category",
+                pfBadgeLabel: "Badge (optional)", pfPriceLabel: "Price (IQD)", pfOldPriceLabel: "Old Price (IQD, optional)",
+                pfDescLabel: "Description", pfSizesLabel: "Available Sizes", pfAddSize: "+ Add Size",
+                pfColorsLabel: "Available Colors", pfAddColor: "+ Add Color",
+                pfImagesLabel: "Product Images", pfUploadText: "Click to upload images from your device",
+                pfStockLabel: "Stock Status", pfInStock: "In Stock", pfOutStock: "Out of Stock",
+                pfSave: "Save Product", pfUpdate: "Update Product", pfCancelEdit: "Cancel Edit",
+                adminProductsTitle: "Products", adminOrdersTitle: "Orders",
+                addToBag: "ADD TO BAG +", soldOut: "SOLD OUT", inStock: "In stock", outOfStock: "Out of stock",
+                addToBagBtn: "Add to bag", soldOutBtn: "Sold out",
+                sizeLabel: "Size", colorLabel: "Color",
+                deliveryNote: "Delivery to all Iraqi provinces.<br>Cash on delivery.",
+                emptyBag: "Your bag is waiting for something good.",
+                remove: "Remove",
+                addedToBag: "added to your bag.",
+                itemRemoved: "Item removed from your bag.",
+                selectSize: "Please select a size first.",
+                selectColor: "Please select a color first.",
+                soldOutMsg: "This item is currently sold out.",
+                emptyBagMsg: "Your bag is empty. Add an item first.",
+                completeFields: "Please complete the required fields.",
+                orderPlaced: "Order placed! WhatsApp will open to confirm with the store.",
+                orderError: "Error saving order. Please try again.",
+                loginFailed: "Login failed: ",
+                loginSuccess: "Welcome back!",
+                enterCredentials: "Please enter email and password.",
+                productDeleted: "Product deleted.",
+                productDeleteError: "Error deleting product.",
+                productUpdated: "Product updated.",
+                productAdded: "Product added.",
+                productSaveError: "Error: ",
+                noProducts: "No products yet. Add your first product above.",
+                noOrders: "No orders yet.",
+                orderLoadError: "Could not load orders.",
+                openWhatsApp: "Open WhatsApp",
+                confirmDelete: "Delete this product?",
+                productNameRequired: "Please enter a product name.",
+                priceRequired: "Please enter a valid price.",
+                imageRequired: "Please add at least one image.",
+                sizeRequired: "Please add at least one size.",
+                colorRequired: "Please add at least one color.",
+                uploading: "Uploading",
+                uploadError: "Error uploading: ",
+                processing: "Processing...",
+                ordersText: "Orders",
+                cashOnDelivery: "Cash on Delivery",
+                phone: "Phone", provinceLabel: "Province", city: "City/Area", address: "Address", notesLabel: "Notes",
+                orderItems: "Order Items", thankYou: "Thank you for your order!",
+                confirmOrder: "Please confirm the order. Thank you!",
+                newOrder: "New Order",
+                langToggle: "عربي"
+            },
+            ar: {
+                announcement: "أساسيات الرجل <span>—</span> توصيل لجميع المحافظات العراقية <span>—</span> الدفع عند الاستلام",
+                logoSub: "أناقة الرجل تتحدث",
+                navHome: "الرئيسية", navShop: "المتجر", navStory: "قصتنا", navContact: "اتصل بنا",
+                bag: "الحقيبة",
+                heroEyebrow: "مجموعة الرجل اليومية",
+                heroTitle1: "ارتدِ", heroTitle2: "قصتك",
+                heroDesc: "أساسيات أزياء رجالية عصرية. ثقة خالدة. اعثر على القطع التي تشبهك — توصيل لكل العراق.",
+                exploreCollection: "استكشف المجموعة",
+                heroNote: "مصنوع ليومك",
+                feat1Title: "أساسيات مختارة", feat1Desc: "قطع منتقاة بعناية للرجل العصري.",
+                feat2Title: "توصيل لكل العراق", feat2Desc: "من بغداد إلى البصرة، نوصل إلى بابك.",
+                feat3Title: "الدفع عند الاستلام", feat3Desc: "ادفع عند استلام طلبك. بسيط.",
+                imageCaption: "المعيار الجديد — 2026",
+                trust1: "✳ أساسيات رجالية مختارة", trust2: "✳ توصيل لكل العراق", trust3: "✳ الدفع عند الاستلام",
+                shopEyebrow: "اختيارات فيلقور", shopTitle1: "اعثر على", shopTitle2: "مقاسك.",
+                shopSub: "قطع رجالية ستعود إليها مرارًا وتكرارًا.",
+                searchPlaceholder: "ابحث في المجموعة...",
+                sortLabel: "ترتيب:", sortFeatured: "مميز", sortLow: "السعر: من الأقل للأعلى", sortHigh: "السعر: من الأعلى للأقل", sortName: "الاسم: أ–ي",
+                filterAll: "كل القطع", filterTops: "قمصان", filterBottoms: "بناطيل", filterOuterwear: "جاكيتات", filterAccessories: "إكسسوارات",
+                emptyState: "لا توجد قطع. جرب بحثًا آخر.",
+                resultsFound: "قطعة", resultPiece: "قطعة",
+                storyEyebrow: "أكثر مما ترتديه", storyTitle1: "الأناقة شخصية.", storyTitle2: "اجعلها لك.",
+                storyDesc: "فيلقور هو مفهوم أزياء رجالية مبني على التعبير عن الذات، الراحة اليومية، والقطع التي تناسب حياتك. ضجيج أقل. أنت أكثر.",
+                storyLink: "اعثر على المفضلة القادمة",
+                quoteLine1: "الثقة هي أفضل شيء", quoteLine2: "يمكنك ارتداؤه.",
+                quoteEyebrow: "عقلية فيلقور",
+                contactEyebrow: "لنتحدث عن الأناقة", contactTitle1: "أناقة جيدة.", contactTitle2: "حديث جيد.",
+                contactDesc: "أسئلة عن قطعة؟ تواصل مع متجرنا.",
+                buildOrder: "ابنِ طلبك",
+                footerDesc: "متجر أزياء رجالية للعراق. الدفع عند الاستلام، جميع المحافظات.",
+                adminLabel: "الإدارة",
+                yourBag: "حقيبتك", subtotal: "المجموع الفرعي", total: "الإجمالي",
+                checkoutCOD: "إتمام الطلب — الدفع عند الاستلام",
+                drawerNote: "توصيل لجميع المحافظات العراقية. الدفع عند الاستلام.",
+                backToShop: "العودة للمتجر", back: "رجوع",
+                checkoutTitle: "إتمام الطلب", checkoutSub: "الدفع عند الاستلام. توصيل لجميع المحافظات العراقية.",
+                coNameLabel: "الاسم الكامل", coNamePlaceholder: "اسمك الكامل", coNameHint: "يرجى إدخال اسمك.",
+                coPhoneLabel: "رقم الهاتف", coPhonePlaceholder: "07XX XXX XXXX", coPhoneHint: "يرجى إدخال رقم هاتف عراقي صحيح.",
+                coProvinceLabel: "المحافظة", coProvincePlaceholder: "اختر محافظتك", coProvinceHint: "يرجى اختيار محافظتك.",
+                coCityLabel: "المدينة / المنطقة", coCityPlaceholder: "المدينة أو المنطقة", coCityHint: "يرجى إدخال مدينتك أو منطقتك.",
+                coAddressLabel: "العنوان الكامل", coAddressPlaceholder: "الشارع، علامة مميزة، رقم المنزل", coAddressHint: "يرجى إدخال عنوانك الكامل.",
+                coNotesLabel: "ملاحظات (اختياري)", coNotesPlaceholder: "أي ملاحظات للتوصيل",
+                orderSummary: "ملخص الطلب", payMethod: "الدفع عند الاستلام",
+                placeOrder: "تأكيد الطلب", checkoutNote: "سيتم إرسال طلبك إلى المتجر عبر واتساب للتأكيد.",
+                adminLoginTitle: "دخول الإدارة", adminLoginSub: "أدخل بيانات الإدارة لإدارة المتجر.",
+                adminLoginBtn: "دخول", adminBack: "العودة للمتجر",
+                adminSub: "إدارة المنتجات، الطلبات، وإعدادات المتجر.",
+                adminViewStore: "عرض المتجر", adminLogout: "تسجيل الخروج",
+                adminTabProducts: "المنتجات", adminTabOrders: "الطلبات",
+                addProductTitle: "إضافة منتج جديد", editProductTitle: "تعديل المنتج",
+                pfNameLabel: "اسم المنتج", pfSkuLabel: "رمز المنتج", pfCategoryLabel: "الفئة",
+                pfBadgeLabel: "شارة (اختياري)", pfPriceLabel: "السعر (دينار)", pfOldPriceLabel: "السعر القديم (دينار، اختياري)",
+                pfDescLabel: "الوصف", pfSizesLabel: "المقاسات المتاحة", pfAddSize: "+ إضافة مقاس",
+                pfColorsLabel: "الألوان المتاحة", pfAddColor: "+ إضافة لون",
+                pfImagesLabel: "صور المنتج", pfUploadText: "اضغط لتحميل الصور من جهازك",
+                pfStockLabel: "حالة المخزون", pfInStock: "متوفر", pfOutStock: "غير متوفر",
+                pfSave: "حفظ المنتج", pfUpdate: "تحديث المنتج", pfCancelEdit: "إلغاء التعديل",
+                adminProductsTitle: "المنتجات", adminOrdersTitle: "الطلبات",
+                addToBag: "أضف للحقيبة +", soldOut: "نفذ", inStock: "متوفر", outOfStock: "غير متوفر",
+                addToBagBtn: "أضف للحقيبة", soldOutBtn: "نفذ",
+                sizeLabel: "المقاس", colorLabel: "اللون",
+                deliveryNote: "توصيل لجميع المحافظات العراقية.<br>الدفع عند الاستلام.",
+                emptyBag: "حقيبتك تنتظر شيئًا جيدًا.",
+                remove: "إزالة",
+                addedToBag: "أضيف إلى حقيبتك.",
+                itemRemoved: "تمت إزالة القطعة من حقيبتك.",
+                selectSize: "يرجى اختيار المقاس أولاً.",
+                selectColor: "يرجى اختيار اللون أولاً.",
+                soldOutMsg: "هذه القطعة غير متوفرة حاليًا.",
+                emptyBagMsg: "حقيبتك فارغة. أضف قطعة أولاً.",
+                completeFields: "يرجى إكمال الحقول المطلوبة.",
+                orderPlaced: "تم الطلب! سيُفتح واتساب لتأكيد الطلب مع المتجر.",
+                orderError: "خطأ في حفظ الطلب. يرجى المحاولة مرة أخرى.",
+                loginFailed: "فشل الدخول: ",
+                loginSuccess: "مرحبًا بعودتك!",
+                enterCredentials: "يرجى إدخال البريد الإلكتروني وكلمة المرور.",
+                productDeleted: "تم حذف المنتج.",
+                productDeleteError: "خطأ في حذف المنتج.",
+                productUpdated: "تم تحديث المنتج.",
+                productAdded: "تمت إضافة المنتج.",
+                productSaveError: "خطأ: ",
+                noProducts: "لا توجد منتجات بعد. أضف منتجك الأول أعلاه.",
+                noOrders: "لا توجد طلبات بعد.",
+                orderLoadError: "تعذر تحميل الطلبات.",
+                openWhatsApp: "فتح واتساب",
+                confirmDelete: "حذف هذا المنتج؟",
+                productNameRequired: "يرجى إدخال اسم المنتج.",
+                priceRequired: "يرجى إدخال سعر صحيح.",
+                imageRequired: "يرجى إضافة صورة واحدة على الأقل.",
+                sizeRequired: "يرجى إضافة مقاس واحد على الأقل.",
+                colorRequired: "يرجى إضافة لون واحد على الأقل.",
+                uploading: "جاري التحميل",
+                uploadError: "خطأ في التحميل: ",
+                processing: "جاري المعالجة...",
+                ordersText: "الطلبات",
+                cashOnDelivery: "الدفع عند الاستلام",
+                phone: "الهاتف", provinceLabel: "المحافظة", city: "المدينة/المنطقة", address: "العنوان", notesLabel: "ملاحظات",
+                orderItems: "عناصر الطلب", thankYou: "شكرًا لطلبك!",
+                confirmOrder: "يرجى تأكيد الطلب. شكرًا!",
+                newOrder: "طلب جديد",
+                langToggle: "English"
+            }
+        };
 
-        const cartCount = document.getElementById("cartCount");
-        const drawerBody = document.getElementById("drawerBody");
-        const drawerSubtotal = document.getElementById("drawerSubtotal");
-        const drawerTotal = document.getElementById("drawerTotal");
-        const drawerCheckout = document.getElementById("drawerCheckout");
-        const cartOverlay = document.getElementById("cartOverlay");
-        const cartDrawer = document.getElementById("cartDrawer");
-        const cartOpenBtn = document.getElementById("cartOpen");
-        const drawerClose = document.getElementById("drawerClose");
+        const colorMap = {
+            "red": "#e53935", "blue": "#1e88e5", "green": "#43a047", "yellow": "#fdd835",
+            "black": "#000000", "white": "#ffffff", "gray": "#9e9e9e", "grey": "#9e9e9e",
+            "navy": "#1a237e", "brown": "#795548", "beige": "#f5f5dc", "pink": "#f48fb1",
+            "purple": "#8e24aa", "orange": "#fb8c00", "gold": "#c49b57", "silver": "#c0c0c0",
+            "maroon": "#6e1e2b", "burgundy": "#800020", "olive": "#808000", "teal": "#008080",
+            "cyan": "#00bcd4", "magenta": "#e91e63", "lime": "#cddc39", "indigo": "#3f51b5",
+            "violet": "#7c4dff", "coral": "#ff7043", "salmon": "#fa8072", "khaki": "#c3b091",
+            "lavender": "#b39ddb", "turquoise": "#40e0d0", "ivory": "#fffff0", "charcoal": "#36454f",
+            "أحمر": "#e53935", "أزرق": "#1e88e5", "أخضر": "#43a047", "أصفر": "#fdd835",
+            "أسود": "#000000", "أبيض": "#ffffff", "رمادي": "#9e9e9e", "كحلي": "#1a237e",
+            "بني": "#795548", "بيج": "#f5f5dc", "وردي": "#f48fb1", "بنفسجي": "#8e24aa",
+            "برتقالي": "#fb8c00", "ذهبي": "#c49b57", "فضي": "#c0c0c0", "عنابي": "#6e1e2b",
+            "زيتي": "#808000", "تركوازي": "#40e0d0", "سماوي": "#87ceeb", "خمري": "#800020"
+        };
 
-        const menuToggle = document.getElementById("menuToggle");
-        const navLinks = document.getElementById("navLinks");
-        const themeToggle = document.getElementById("themeToggle");
-        const toast = document.getElementById("toast");
-        const backTop = document.getElementById("backTop");
-        const contactBagBtn = document.getElementById("contactBagBtn");
-        const logoHome = document.getElementById("logoHome");
-        const footerLogo = document.getElementById("footerLogo");
+        function t(key) {
+            return translations[currentLang][key] || translations.en[key] || key;
+        }
 
-        const productPage = document.getElementById("productPage");
-        const productDetail = document.getElementById("productDetail");
-        const productBack = document.getElementById("productBack");
-        const productClose = document.getElementById("productClose");
-        const lightbox = document.getElementById("lightbox");
-        const lightboxImg = document.getElementById("lightboxImg");
-        const lightboxClose = document.getElementById("lightboxClose");
+        function applyLanguage(lang) {
+            currentLang = lang;
+            document.documentElement.lang = lang;
+            document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+            try { localStorage.setItem(LANG_KEY, lang); } catch (e) {}
+            document.getElementById("langToggle").textContent = t("langToggle");
 
-        const checkoutPage = document.getElementById("checkoutPage");
-        const checkoutForm = document.getElementById("checkoutForm");
-        const checkoutLines = document.getElementById("checkoutLines");
-        const checkoutTotal = document.getElementById("checkoutTotal");
-        const checkoutBack = document.getElementById("checkoutBack");
-        const checkoutClose = document.getElementById("checkoutClose");
-        const checkoutSubmit = document.getElementById("checkoutSubmit");
+            document.querySelectorAll("[data-i18n]").forEach(el => {
+                const key = el.dataset.i18n;
+                if (translations[lang] && translations[lang][key]) {
+                    if (key === "announcement" || key === "deliveryNote" || key === "storyLink") {
+                        el.innerHTML = translations[lang][key];
+                    } else if (key === "storyLink") {
+                        el.innerHTML = translations[lang][key] + ' <span>↗</span>';
+                    } else {
+                        el.textContent = translations[lang][key];
+                    }
+                }
+            });
 
-        const adminPage = document.getElementById("adminPage");
-        const adminEmail = document.getElementById("adminEmail");
-        const adminPassword = document.getElementById("adminPassword");
-        const adminLoginBtn = document.getElementById("adminLoginBtn");
-        const adminClose = document.getElementById("adminClose");
-        const adminOpen = document.getElementById("adminOpen");
-        const adminLogout = document.getElementById("adminLogout");
-        const adminViewStore = document.getElementById("adminViewStore");
+            document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
+                const key = el.dataset.i18nPlaceholder;
+                if (translations[lang] && translations[lang][key]) {
+                    el.placeholder = translations[lang][key];
+                }
+            });
 
-        const heroSlider = document.getElementById("heroSlider");
-        const heroPrev = document.getElementById("heroPrev");
-        const heroNext = document.getElementById("heroNext");
-        const heroDots = document.getElementById("heroDots");
+            const storyLink = document.querySelector(".text-link");
+            if (storyLink) storyLink.innerHTML = t("storyLink") + ' <span>↗</span>';
+
+            renderProducts();
+            renderCart();
+            if (currentProduct && productPage.classList.contains("open")) renderProductDetail();
+            if (isAdmin) {
+                renderAdminProducts();
+                renderAdminOrders();
+            }
+        }
+
+        function resolveColorHex(name) {
+            if (!name) return "#000000";
+            const trimmed = name.trim().toLowerCase();
+            if (trimmed.startsWith("#")) return trimmed;
+            if (colorMap[trimmed]) return colorMap[trimmed];
+            for (const key of Object.keys(colorMap)) {
+                if (key.toLowerCase() === trimmed) return colorMap[key];
+            }
+            return "#000000";
+        }
 
         function formatIQD(amount) {
             return new Intl.NumberFormat("en-IQ", { maximumFractionDigits: 0 }).format(amount) + " IQD";
@@ -3043,7 +3309,7 @@
                 const discount = getDiscountPercent(product);
                 const cover = (product.images && product.images[0]) || "";
                 const colorNames = (product.colors || []).map(c => c.name).join(" / ");
-                
+
                 return `
                     <article class="product-card" data-open-product="${product.id}" style="animation-delay:${index * 55}ms">
                         <div class="product-image">
@@ -3051,7 +3317,7 @@
                             ${product.badge ? `<span class="product-badge">${escapeHTML(product.badge)}</span>` : ""}
                             ${discount > 0 ? `<span class="product-badge discount">-${discount}%</span>` : ""}
                             <button class="quick-add" type="button" data-add="${product.id}" aria-label="Add ${escapeHTML(product.name)} to bag" ${product.stock ? "" : "disabled"}>
-                                ${product.stock ? "ADD TO BAG +" : "SOLD OUT"}
+                                ${product.stock ? t("addToBag") : t("soldOut")}
                             </button>
                         </div>
                         <div class="product-info">
@@ -3066,7 +3332,10 @@
                 `;
             }).join("");
 
-            resultsCount.textContent = `${visibleProducts.length} ${visibleProducts.length === 1 ? "piece" : "pieces"} found`;
+            const count = visibleProducts.length;
+            resultsCount.textContent = currentLang === "ar"
+                ? `${count} ${count === 1 ? "قطعة" : "قطع"}`
+                : `${count} ${count === 1 ? "piece" : "pieces"} found`;
             emptyState.hidden = visibleProducts.length !== 0;
         }
 
@@ -3175,13 +3444,13 @@
                     <div class="detail-price">
                         ${formatIQD(product.price)}
                         ${product.old_price > 0 ? `<del>${formatIQD(product.old_price)}</del>` : ""}
-                        ${discount > 0 ? `&nbsp;<span style="color:var(--gold);font-size:13px;">-${discount}%</span>` : ""}
+                        ${discount > 0 ? `&nbsp;<span style="color:var(--maroon);font-size:13px;">-${discount}%</span>` : ""}
                     </div>
                     <p class="detail-desc">${escapeHTML(product.description || "")}</p>
 
                     ${sizes.length ? `
                     <div class="detail-group">
-                        <div class="detail-group-label">Size <span>${escapeHTML(sizes.join(" · "))}</span></div>
+                        <div class="detail-group-label">${t("sizeLabel")} <span>${escapeHTML(sizes.join(" · "))}</span></div>
                         <div class="size-options" id="sizeOptions">
                             ${sizes.map(s => `<button type="button" class="size-option ${selectedSize === s ? "active" : ""}" data-size="${escapeHTML(s)}">${escapeHTML(s)}</button>`).join("")}
                         </div>
@@ -3189,15 +3458,15 @@
 
                     ${colors.length ? `
                     <div class="detail-group">
-                        <div class="detail-group-label">Color <span>${escapeHTML(colors.map(c => c.name).join(" / "))}</span></div>
+                        <div class="detail-group-label">${t("colorLabel")} <span>${escapeHTML(colors.map(c => c.name).join(" / "))}</span></div>
                         <div class="color-options" id="colorOptions">
-                            ${colors.map(c => `<button type="button" class="color-option ${selectedColor === c.name ? "active" : ""}" data-color="${escapeHTML(c.name)}" style="background:${escapeHTML(c.hex)}" title="${escapeHTML(c.name)}"></button>`).join("")}
+                            ${colors.map(c => `<button type="button" class="color-option ${selectedColor === c.name ? "active" : ""}" data-color="${escapeHTML(c.name)}" style="background:${escapeHTML(resolveColorHex(c.hex || c.name))}" title="${escapeHTML(c.name)}"></button>`).join("")}
                         </div>
                     </div>` : ""}
 
-                    <div class="stock-status ${product.stock ? "" : "out"}">${product.stock ? "In stock" : "Out of stock"}</div>
-                    <button class="btn btn-dark detail-add" type="button" id="detailAddBtn" ${product.stock ? "" : "disabled"}>${product.stock ? "Add to bag" : "Sold out"} <span>↗</span></button>
-                    <p class="detail-delivery">Delivery to all Iraqi provinces.<br>Cash on delivery.</p>
+                    <div class="stock-status ${product.stock ? "" : "out"}">${product.stock ? t("inStock") : t("outOfStock")}</div>
+                    <button class="btn btn-dark detail-add" type="button" id="detailAddBtn" ${product.stock ? "" : "disabled"}>${product.stock ? t("addToBagBtn") : t("soldOutBtn")} <span>↗</span></button>
+                    <p class="detail-delivery">${t("deliveryNote")}</p>
                 </div>
             `;
 
@@ -3285,13 +3554,13 @@
         function addToCart(productId, size, color) {
             const product = getProduct(productId);
             if (!product) return;
-            if (!product.stock) { showToast("This item is currently sold out."); return; }
-            
+            if (!product.stock) { showToast(t("soldOutMsg")); return; }
+
             const sizes = product.sizes || [];
             const colors = product.colors || [];
 
-            if (sizes.length > 1 && !size) { showToast("Please select a size first."); return; }
-            if (colors.length > 1 && !color) { showToast("Please select a color first."); return; }
+            if (sizes.length > 1 && !size) { showToast(t("selectSize")); return; }
+            if (colors.length > 1 && !color) { showToast(t("selectColor")); return; }
 
             const chosenSize = size || sizes[0] || null;
             const chosenColor = color || (colors[0] ? colors[0].name : null);
@@ -3302,7 +3571,7 @@
 
             saveCart();
             renderCart();
-            showToast(`${product.name} added to your bag.`);
+            showToast(`${product.name} ${t("addedToBag")}`);
         }
 
         function changeQuantity(index, amount) {
@@ -3318,7 +3587,7 @@
             cart.splice(index, 1);
             saveCart();
             renderCart();
-            showToast("Item removed from your bag.");
+            showToast(t("itemRemoved"));
         }
 
         function getCartCount() { return cart.reduce((total, item) => total + item.quantity, 0); }
@@ -3333,7 +3602,7 @@
             drawerCheckout.disabled = cart.length === 0;
 
             if (cart.length === 0) {
-                drawerBody.innerHTML = `<p class="drawer-empty">Your bag is waiting for something good.</p>`;
+                drawerBody.innerHTML = `<p class="drawer-empty">${t("emptyBag")}</p>`;
                 return;
             }
 
@@ -3356,7 +3625,7 @@
                         </div>
                         <div class="drawer-item-end">
                             <p class="drawer-price">${formatIQD(product.price * item.quantity)}</p>
-                            <button type="button" class="drawer-remove" data-remove="${index}">Remove</button>
+                            <button type="button" class="drawer-remove" data-remove="${index}">${t("remove")}</button>
                         </div>
                     </article>
                 `;
@@ -3393,7 +3662,7 @@
         contactBagBtn.addEventListener("click", openCart);
 
         function openCheckout() {
-            if (cart.length === 0) { showToast("Your bag is empty. Add an item first."); return; }
+            if (cart.length === 0) { showToast(t("emptyBagMsg")); return; }
             closeCart();
             renderCheckoutSummary();
             checkoutPage.classList.add("open");
@@ -3447,11 +3716,11 @@
         }
 
         checkoutSubmit.addEventListener("click", async () => {
-            if (cart.length === 0) { showToast("Your bag is empty."); return; }
-            if (!validateCheckout()) { showToast("Please complete the required fields."); return; }
+            if (cart.length === 0) { showToast(t("emptyBagMsg")); return; }
+            if (!validateCheckout()) { showToast(t("completeFields")); return; }
 
             checkoutSubmit.disabled = true;
-            checkoutSubmit.innerHTML = "Processing...";
+            checkoutSubmit.innerHTML = t("processing");
 
             const name = document.getElementById("coName").value.trim();
             const phone = document.getElementById("coPhone").value.trim();
@@ -3483,31 +3752,34 @@
             }]);
 
             if (error) {
-                showToast("Error saving order. Please try again.");
+                showToast(t("orderError"));
                 checkoutSubmit.disabled = false;
-                checkoutSubmit.innerHTML = `Place Order <span>↗</span>`;
+                checkoutSubmit.innerHTML = `${t("placeOrder")} <span>↗</span>`;
                 return;
             }
 
             const lines = orderItems.map(item => `• ${item.name}${item.size ? ` (${item.size})` : ""}${item.color ? ` / ${item.color}` : ""} × ${item.quantity} — ${formatIQD(item.price * item.quantity)}`);
 
             const message = [
-                "🛍️ VELQOR — New Order",
+                "🛍️ VELQOR — طلب جديد",
                 "",
-                `👤 Name: ${name}`,
-                `📞 Phone: ${phone}`,
-                `🏙️ Province: ${province}`,
-                `📍 City/Area: ${city}`,
-                `🏠 Address: ${address}`,
-                notes ? `📝 Notes: ${notes}` : "",
+                `👤 الاسم: ${name}`,
+                `📞 الهاتف: ${phone}`,
+                `🏙️ المحافظة: ${province}`,
+                `📍 المدينة/المنطقة: ${city}`,
+                `🏠 العنوان: ${address}`,
+                notes ? `📝 ملاحظات: ${notes}` : "",
                 "",
-                "🧾 Order Items:",
+                "🧾 عناصر الطلب:",
                 ...lines,
                 "",
-                `💰 Total: ${formatIQD(total)}`,
-                "💵 Payment: Cash on Delivery",
+                `💰 الإجمالي: ${formatIQD(total)}`,
+                "💵 الدفع: عند الاستلام",
                 "",
-                "Please confirm the order. Thank you!"
+                "✅ شكرًا لطلبك! تم استلام طلبك بنجاح.",
+                "📞 سيتم التواصل معك قريبًا لتأكيد الطلب.",
+                "",
+                "يرجى تأكيد الطلب. شكرًا!"
             ].filter(Boolean).join("\n");
 
             const encoded = encodeURIComponent(message);
@@ -3519,7 +3791,8 @@
                 window.open(`https://wa.me/9647777895744?text=${encoded}`, "_blank", "noopener,noreferrer");
             }, 600);
 
-            showToast("Order placed! WhatsApp will open to confirm with the store.");
+            showToast(t("orderPlaced"));
+            showOrderConfirmation(name);
 
             cart = [];
             saveCart();
@@ -3527,8 +3800,29 @@
             closeCheckout();
 
             checkoutSubmit.disabled = false;
-            checkoutSubmit.innerHTML = `Place Order <span>↗</span>`;
+            checkoutSubmit.innerHTML = `${t("placeOrder")} <span>↗</span>`;
         });
+
+        function showOrderConfirmation(name) {
+            const existing = document.getElementById("orderConfirmationModal");
+            if (existing) existing.remove();
+
+            const modal = document.createElement("div");
+            modal.id = "orderConfirmationModal";
+            modal.style.cssText = "position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.5);display:grid;place-items:center;padding:20px;animation:fadeIn 0.3s";
+            modal.innerHTML = `
+                <div style="background:var(--paper);border:1px solid var(--line);padding:40px 30px;max-width:440px;width:100%;text-align:center;animation:rise 0.4s">
+                    <div style="width:70px;height:70px;border-radius:50%;background:var(--maroon);color:white;display:grid;place-items:center;margin:0 auto 20px;font-size:32px">✓</div>
+                    <h3 style="font-family:var(--serif);font-size:26px;margin-bottom:10px;color:var(--ink)">${currentLang === "ar" ? "شكرًا لطلبك!" : "Thank you for your order!"}</h3>
+                    <p style="font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:8px">${escapeHTML(name)}</p>
+                    <p style="font-size:12px;color:var(--muted);line-height:1.8;margin-bottom:24px">${currentLang === "ar" ? "تم استلام طلبك بنجاح. سيتم التواصل معك قريبًا لتأكيد الطلب." : "Your order has been received successfully. We will contact you soon to confirm."}</p>
+                    <button type="button" id="closeConfirmation" style="min-height:46px;padding:0 28px;background:var(--maroon);color:white;border:0;font-size:11px;font-weight:600;letter-spacing:1px;cursor:pointer">${currentLang === "ar" ? "حسنًا" : "OK"}</button>
+                </div>
+            `;
+            document.body.appendChild(modal);
+            document.getElementById("closeConfirmation").addEventListener("click", () => modal.remove());
+            modal.addEventListener("click", e => { if (e.target === modal) modal.remove(); });
+        }
 
         function openAdmin() {
             adminPage.classList.add("open");
@@ -3549,26 +3843,26 @@
         adminLoginBtn.addEventListener("click", async () => {
             const email = adminEmail.value.trim();
             const password = adminPassword.value;
-            if (!email || !password) { showToast("Please enter email and password."); return; }
+            if (!email || !password) { showToast(t("enterCredentials")); return; }
 
             adminLoginBtn.disabled = true;
-            adminLoginBtn.innerHTML = "Logging in...";
+            adminLoginBtn.innerHTML = "...";
 
             const { data, error } = await supabase.auth.signInWithPassword({ email, password });
 
             adminLoginBtn.disabled = false;
-            adminLoginBtn.innerHTML = `Login <span>↗</span>`;
+            adminLoginBtn.innerHTML = `${t("adminLoginBtn")} <span>↗</span>`;
 
             if (error) {
-                showToast("Login failed: " + error.message);
+                showToast(t("loginFailed") + error.message);
                 return;
             }
 
             isAdmin = true;
             adminPage.classList.add("logged");
             adminPassword.value = "";
-            showToast("Welcome back!");
-            loadProducts(); 
+            showToast(t("loginSuccess"));
+            loadProducts();
             renderAdminOrders();
         });
 
@@ -3599,7 +3893,7 @@
             count.textContent = products.length;
 
             if (!products.length) {
-                list.innerHTML = `<p class="admin-empty">No products yet. Add your first product above.</p>`;
+                list.innerHTML = `<p class="admin-empty">${t("noProducts")}</p>`;
                 return;
             }
 
@@ -3612,7 +3906,7 @@
                             <h4>${escapeHTML(product.name)}</h4>
                             <p>${escapeHTML(product.category)} · ${formatIQD(product.price)} · ${escapeHTML(product.sku || "—")}</p>
                         </div>
-                        <span class="admin-badge ${product.stock ? "in" : "out"}">${product.stock ? "In Stock" : "Out"}</span>
+                        <span class="admin-badge ${product.stock ? "in" : "out"}">${product.stock ? t("pfInStock") : t("pfOutStock")}</span>
                         <div class="admin-item-actions">
                             <button class="admin-mini-btn" type="button" data-edit="${product.id}">Edit</button>
                             <button class="admin-mini-btn danger" type="button" data-delete="${product.id}">Delete</button>
@@ -3628,13 +3922,13 @@
 
             if (edit) startEditProduct(Number(edit.dataset.edit));
             if (del) {
-                if (confirm("Delete this product?")) {
+                if (confirm(t("confirmDelete"))) {
                     const { error } = await supabase.from('products').delete().eq('id', Number(del.dataset.delete));
                     if (!error) {
-                        showToast("Product deleted.");
+                        showToast(t("productDeleted"));
                         loadProducts();
                     } else {
-                        showToast("Error deleting product.");
+                        showToast(t("productDeleteError"));
                     }
                 }
             }
@@ -3646,16 +3940,16 @@
             if (!list) return;
 
             const { data: orders, error } = await supabase.from('orders').select('*').order('created_at', { ascending: false });
-            
+
             if (error || !orders) {
-                list.innerHTML = `<p class="admin-empty">Could not load orders.</p>`;
+                list.innerHTML = `<p class="admin-empty">${t("orderLoadError")}</p>`;
                 return;
             }
 
             count.textContent = orders.length;
 
             if (!orders.length) {
-                list.innerHTML = `<p class="admin-empty">No orders yet.</p>`;
+                list.innerHTML = `<p class="admin-empty">${t("noOrders")}</p>`;
                 return;
             }
 
@@ -3674,9 +3968,9 @@
 
 ${escapeHTML(itemsText)}
 
-Total: ${formatIQD(order.total)} · Cash on Delivery</div>
+Total: ${formatIQD(order.total)} · ${t("cashOnDelivery")}</div>
                         <div class="admin-order-actions">
-                            <button class="admin-mini-btn" type="button" data-wa="${escapeHTML(order.phone)}">Open WhatsApp</button>
+                            <button class="admin-mini-btn" type="button" data-wa="${escapeHTML(order.phone)}">${t("openWhatsApp")}</button>
                         </div>
                     </div>
                 `;
@@ -3696,7 +3990,7 @@ Total: ${formatIQD(order.total)} · Cash on Delivery</div>
             if (!product) return;
 
             editingId = id;
-            document.getElementById("productFormTitle").textContent = "Edit Product";
+            document.getElementById("productFormTitle").textContent = t("editProductTitle");
             document.getElementById("pfId").value = id;
             document.getElementById("pfName").value = product.name || "";
             document.getElementById("pfSku").value = product.sku || "";
@@ -3706,13 +4000,13 @@ Total: ${formatIQD(order.total)} · Cash on Delivery</div>
             document.getElementById("pfOldPrice").value = product.old_price || 0;
             document.getElementById("pfDescription").value = product.description || "";
             document.getElementById("pfStock").value = product.stock ? "true" : "false";
-            document.getElementById("pfSubmit").innerHTML = `Update Product <span>↗</span>`;
+            document.getElementById("pfSubmit").innerHTML = `${t("pfUpdate")} <span>↗</span>`;
             document.getElementById("pfCancel").style.display = "inline-flex";
 
             pfSizes = [...(product.sizes || [])];
-            pfColors = (product.colors || []).map(c => ({ name: c.name, hex: c.hex }));
+            pfColors = (product.colors || []).map(c => ({ name: c.name, hex: c.hex || resolveColorHex(c.name) }));
             pfImages = [...(product.images || [])];
-            
+
             renderPfSizes();
             renderPfColors();
             renderPfImagePreview();
@@ -3722,10 +4016,10 @@ Total: ${formatIQD(order.total)} · Cash on Delivery</div>
 
         function resetProductForm() {
             editingId = null;
-            document.getElementById("productFormTitle").textContent = "Add New Product";
+            document.getElementById("productFormTitle").textContent = t("addProductTitle");
             document.getElementById("productForm").reset();
             document.getElementById("pfId").value = "";
-            document.getElementById("pfSubmit").innerHTML = `Save Product <span>↗</span>`;
+            document.getElementById("pfSubmit").innerHTML = `${t("pfSave")} <span>↗</span>`;
             document.getElementById("pfCancel").style.display = "none";
             pfSizes = [];
             pfColors = [];
@@ -3752,12 +4046,29 @@ Total: ${formatIQD(order.total)} · Cash on Delivery</div>
             const wrap = document.getElementById("pfColorsList");
             wrap.innerHTML = pfColors.map((color, i) => `
                 <div class="admin-dynamic-row">
-                    <input type="text" value="${escapeHTML(color.name)}" data-color-name="${i}" placeholder="Color name">
+                    <input type="text" value="${escapeHTML(color.name)}" data-color-name="${i}" placeholder="Color name" style="border-left:4px solid ${escapeHTML(resolveColorHex(color.hex || color.name))}">
                     <input type="text" value="${escapeHTML(color.hex)}" data-color-hex="${i}" placeholder="#000000">
                     <button type="button" data-remove-color="${i}">×</button>
                 </div>
             `).join("");
         }
+
+        document.getElementById("pfColorsList").addEventListener("focusout", e => {
+            const nameInput = e.target.closest("[data-color-name]");
+            if (nameInput) {
+                const i = Number(nameInput.dataset.colorName);
+                const hexInput = document.querySelector(`[data-color-hex="${i}"]`);
+                if (hexInput) {
+                    const resolved = resolveColorHex(nameInput.value);
+                    if (resolved !== "#000000" || !pfColors[i].hex || pfColors[i].hex === "#000000") {
+                        hexInput.value = resolved;
+                        pfColors[i].hex = resolved;
+                    }
+                    pfColors[i].name = nameInput.value;
+                    nameInput.style.borderLeft = `4px solid ${resolved}`;
+                }
+            }
+        });
 
         function renderPfImagePreview() {
             const wrap = document.getElementById("pfImagePreview");
@@ -3809,24 +4120,24 @@ Total: ${formatIQD(order.total)} · Cash on Delivery</div>
             const files = fileInput.files;
             if (!files.length) return;
 
-            uploadZone.innerHTML = `<p>Uploading ${files.length} image(s)...</p>`;
-            
+            uploadZone.innerHTML = `<p>${t("uploading")} ${files.length}...</p>`;
+
             for (let i = 0; i < files.length; i++) {
                 const file = files[i];
                 const fileExt = file.name.split('.').pop();
                 const fileName = `${Date.now()}_${Math.random().toString(36).substring(2)}.${fileExt}`;
-                
+
                 const { data, error } = await supabase.storage.from('product-images').upload(fileName, file);
-                
+
                 if (!error && data) {
                     const { data: publicUrlData } = supabase.storage.from('product-images').getPublicUrl(fileName);
                     pfImages.push(publicUrlData.publicUrl);
                 } else {
-                    showToast("Error uploading: " + error.message);
+                    showToast(t("uploadError") + error.message);
                 }
             }
-            
-            uploadZone.innerHTML = `<p>Click to upload images from your device</p>`;
+
+            uploadZone.innerHTML = `<p>${t("pfUploadText")}</p>`;
             fileInput.value = "";
             renderPfImagePreview();
         });
@@ -3843,15 +4154,15 @@ Total: ${formatIQD(order.total)} · Cash on Delivery</div>
             const description = document.getElementById("pfDescription").value.trim();
             const stock = document.getElementById("pfStock").value === "true";
 
-            if (!name) { showToast("Please enter a product name."); return; }
-            if (!price || price <= 0) { showToast("Please enter a valid price."); return; }
-            if (!pfImages.length) { showToast("Please add at least one image."); return; }
+            if (!name) { showToast(t("productNameRequired")); return; }
+            if (!price || price <= 0) { showToast(t("priceRequired")); return; }
+            if (!pfImages.length) { showToast(t("imageRequired")); return; }
 
             const cleanSizes = pfSizes.map(s => s.trim()).filter(Boolean);
-            const cleanColors = pfColors.map(c => ({ name: c.name.trim(), hex: c.hex.trim() })).filter(c => c.name);
+            const cleanColors = pfColors.map(c => ({ name: c.name.trim(), hex: c.hex || resolveColorHex(c.name) })).filter(c => c.name);
 
-            if (!cleanSizes.length) { showToast("Please add at least one size."); return; }
-            if (!cleanColors.length) { showToast("Please add at least one color."); return; }
+            if (!cleanSizes.length) { showToast(t("sizeRequired")); return; }
+            if (!cleanColors.length) { showToast(t("colorRequired")); return; }
 
             const productData = {
                 name, price, old_price: oldPrice, sku: sku || ("VQ-" + Date.now().toString().slice(-6)),
@@ -3859,51 +4170,21 @@ Total: ${formatIQD(order.total)} · Cash on Delivery</div>
             };
 
             document.getElementById("pfSubmit").disabled = true;
-            document.getElementById("pfSubmit").innerHTML = "Saving...";
+            document.getElementById("pfSubmit").innerHTML = "...";
 
             if (editingId) {
                 const { error } = await supabase.from('products').update(productData).eq('id', editingId);
-                if (!error) { showToast("Product updated."); resetProductForm(); loadProducts(); }
-                else { showToast("Error: " + error.message); }
+                if (!error) { showToast(t("productUpdated")); resetProductForm(); loadProducts(); }
+                else { showToast(t("productSaveError") + error.message); }
             } else {
                 const { error } = await supabase.from('products').insert([productData]);
-                if (!error) { showToast("Product added."); resetProductForm(); loadProducts(); }
-                else { showToast("Error: " + error.message); }
+                if (!error) { showToast(t("productAdded")); resetProductForm(); loadProducts(); }
+                else { showToast(t("productSaveError") + error.message); }
             }
 
             document.getElementById("pfSubmit").disabled = false;
-            document.getElementById("pfSubmit").innerHTML = editingId ? `Update Product <span>↗</span>` : `Save Product <span>↗</span>`;
+            document.getElementById("pfSubmit").innerHTML = editingId ? `${t("pfUpdate")} <span>↗</span>` : `${t("pfSave")} <span>↗</span>`;
         });
-
-        function initHeroSlider() {
-            const slides = heroSlider.querySelectorAll(".hero-slide");
-            if (!slides.length) return;
-
-            slides.forEach((slide, index) => {
-                const dot = document.createElement("button");
-                dot.type = "button";
-                dot.setAttribute("aria-label", `Show image ${index + 1}`);
-                if (index === 0) dot.classList.add("active");
-                dot.addEventListener("click", () => goToSlide(index));
-                heroDots.appendChild(dot);
-            });
-
-            function goToSlide(index) {
-                heroIndex = (index + slides.length) % slides.length;
-                slides.forEach((s, i) => s.classList.toggle("active", i === heroIndex));
-                heroDots.querySelectorAll("button").forEach((d, i) => d.classList.toggle("active", i === heroIndex));
-            }
-
-            heroNext.addEventListener("click", () => { goToSlide(heroIndex + 1); restartHeroTimer(); });
-            heroPrev.addEventListener("click", () => { goToSlide(heroIndex - 1); restartHeroTimer(); });
-
-            function startHeroTimer() { heroTimer = window.setInterval(() => goToSlide(heroIndex + 1), 4500); }
-            function restartHeroTimer() { window.clearInterval(heroTimer); startHeroTimer(); }
-
-            startHeroTimer();
-            heroSlider.addEventListener("mouseenter", () => window.clearInterval(heroTimer));
-            heroSlider.addEventListener("mouseleave", restartHeroTimer);
-        }
 
         function initCustomCursor() {
             if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
@@ -3950,6 +4231,10 @@ Total: ${formatIQD(order.total)} · Cash on Delivery</div>
         themeToggle.addEventListener("click", () => {
             const current = document.documentElement.getAttribute("data-theme");
             setTheme(current === "dark" ? "light" : "dark");
+        });
+
+        document.getElementById("langToggle").addEventListener("click", () => {
+            applyLanguage(currentLang === "en" ? "ar" : "en");
         });
 
         menuToggle.addEventListener("click", () => {
@@ -4002,8 +4287,10 @@ Total: ${formatIQD(order.total)} · Cash on Delivery</div>
             loadTheme();
             loadCart();
             renderCart();
+            let storedLang = "en";
+            try { storedLang = localStorage.getItem(LANG_KEY) || "en"; } catch (e) {}
+            applyLanguage(storedLang);
             await loadProducts();
-            initHeroSlider();
             initCustomCursor();
 
             const { data: { session } } = await supabase.auth.getSession();
