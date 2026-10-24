@@ -79,26 +79,17 @@
         body::before {
             content: "";
             position: fixed;
-            inset: -50%;
+            inset: 0;
             pointer-events: none;
             z-index: 1;
             background-image: var(--grain);
-            opacity: .5;
-            mix-blend-mode: multiply;
-            animation: grainShift 24s linear infinite;
+            background-size: 200px 200px;
+            opacity: .035;
+            mix-blend-mode: normal;
         }
 
         [data-theme="dark"] body::before {
-            mix-blend-mode: screen;
-            opacity: .28;
-        }
-
-        @keyframes grainShift {
-            0% { transform: translate(0, 0); }
-            25% { transform: translate(-2%, 1%); }
-            50% { transform: translate(1%, -2%); }
-            75% { transform: translate(-1%, -1%); }
-            100% { transform: translate(0, 0); }
+            opacity: .06;
         }
 
         body, button, input, select, textarea {
@@ -143,13 +134,13 @@
         }
 
         ::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg, var(--accent-light), var(--accent-deep));
+            background: var(--accent-base);
             border-radius: 10px;
             border: 2px solid var(--cream);
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: var(--accent-base);
+            background: var(--accent-deep);
         }
 
         * {
@@ -176,7 +167,6 @@
             background: linear-gradient(90deg, var(--accent-light), var(--accent-base), var(--accent-deep));
             z-index: 9999;
             transition: width .1s linear;
-            box-shadow: 0 0 12px rgba(122, 46, 63, .5);
         }
 
         .curtain {
@@ -214,7 +204,7 @@
             z-index: 999;
             display: grid;
             place-items: center;
-            background: radial-gradient(ellipse at 50% 40%, rgba(168, 80, 101, .06), transparent 70%), var(--paper);
+            background: var(--paper);
             transition: opacity .7s ease, visibility .7s ease;
         }
 
@@ -312,6 +302,14 @@
             50%, 70% { transform: translateY(-17px) rotate(-45deg); width: 100%; }
         }
 
+        .loader.hide .loader-burger span,
+        .loader.hide .loader-brand span,
+        .loader.hide .loader-orbit::before,
+        .loader.hide .loader-orbit::after,
+        .loader.hide .loader-bar::after {
+            animation: none !important;
+        }
+
         .loader-brand {
             font-family: var(--mono);
             font-size: 13px;
@@ -389,19 +387,6 @@
             position: relative;
             z-index: 2;
             overflow: hidden;
-        }
-
-        .announcement::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .15), transparent);
-            animation: announceShine 6s linear infinite;
-        }
-
-        @keyframes announceShine {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
         }
 
         .announcement span {
@@ -501,12 +486,6 @@
 
         .nav-links a:hover::after {
             width: 100%;
-            animation: waveUnderline .9s ease-in-out infinite;
-        }
-
-        @keyframes waveUnderline {
-            0%, 100% { transform: scaleY(1); opacity: 1; }
-            50% { transform: scaleY(1.8); opacity: .7; }
         }
 
         .header-actions {
@@ -631,8 +610,7 @@
             z-index: 1;
             pointer-events: none;
             overflow: hidden;
-            mix-blend-mode: screen;
-            opacity: .55;
+            opacity: .35;
         }
 
         .hero-aurora span {
@@ -647,7 +625,6 @@
             background: radial-gradient(circle, rgba(168, 80, 101, .9), transparent 70%);
             top: -8%;
             right: 5%;
-            animation: auroraFloat 14s ease-in-out infinite;
         }
 
         .hero-aurora span:nth-child(2) {
@@ -656,7 +633,6 @@
             background: radial-gradient(circle, rgba(201, 122, 142, .8), transparent 70%);
             bottom: -12%;
             left: 8%;
-            animation: auroraFloat 18s ease-in-out infinite reverse;
         }
 
         .hero-aurora span:nth-child(3) {
@@ -665,13 +641,6 @@
             background: radial-gradient(circle, rgba(245, 208, 216, .7), transparent 70%);
             top: 40%;
             left: 40%;
-            animation: auroraFloat 22s ease-in-out infinite;
-        }
-
-        @keyframes auroraFloat {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(60px, -40px) scale(1.15); }
-            66% { transform: translate(-50px, 30px) scale(.9); }
         }
 
         .hero-arc {
@@ -687,12 +656,6 @@
             border-left-color: transparent;
             pointer-events: none;
             z-index: 1;
-            animation: arcSpin 40s linear infinite;
-        }
-
-        @keyframes arcSpin {
-            from { transform: translateX(-50%) rotate(0deg); }
-            to { transform: translateX(-50%) rotate(360deg); }
         }
 
         .hero-copy {
@@ -765,14 +728,6 @@
             overflow: hidden;
         }
 
-        .btn::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, .15), transparent 60%);
-            pointer-events: none;
-        }
-
         .btn:hover {
             transform: translateY(-3px);
         }
@@ -783,17 +738,9 @@
         }
 
         .btn-dark {
-            background: linear-gradient(135deg, var(--accent-light), var(--accent-base), var(--accent-deep), var(--accent-base), var(--accent-light));
-            background-size: 300% 300%;
+            background: linear-gradient(135deg, var(--accent-light), var(--accent-base));
             color: #fff;
             box-shadow: 0 8px 24px rgba(122, 46, 63, .25);
-            animation: gradientMove 6s ease infinite;
-        }
-
-        @keyframes gradientMove {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
         }
 
         .btn-dark:hover {
@@ -848,14 +795,9 @@
             position: absolute;
             inset: 0;
             background-image: var(--grain);
-            opacity: .5;
+            background-size: 200px 200px;
+            opacity: .04;
             pointer-events: none;
-            mix-blend-mode: multiply;
-        }
-
-        [data-theme="dark"] .shop-section::before {
-            mix-blend-mode: screen;
-            opacity: .3;
         }
 
         .blob {
@@ -864,7 +806,7 @@
             filter: blur(80px);
             pointer-events: none;
             z-index: 0;
-            opacity: .35;
+            opacity: .25;
         }
 
         .shop-section .blob:nth-of-type(1) {
@@ -873,7 +815,6 @@
             background: radial-gradient(circle, rgba(168, 80, 101, .5), transparent 70%);
             top: 10%;
             right: -5%;
-            animation: blobFloat 20s ease-in-out infinite;
         }
 
         .shop-section .blob:nth-of-type(2) {
@@ -882,12 +823,6 @@
             background: radial-gradient(circle, rgba(201, 122, 142, .45), transparent 70%);
             bottom: 5%;
             left: -4%;
-            animation: blobFloat 26s ease-in-out infinite reverse;
-        }
-
-        @keyframes blobFloat {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(40px, -30px) scale(1.1); }
         }
 
         .section-divider {
@@ -924,17 +859,10 @@
             margin-top: 13px;
             text-wrap: balance;
             background: linear-gradient(135deg, var(--ink), var(--accent-base), var(--accent-light), var(--ink));
-            background-size: 250% 250%;
+            background-size: 100% 100%;
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: textGradient 8s ease infinite;
-        }
-
-        @keyframes textGradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
         }
 
         .section-heading h2 em, .story-copy h2 em, .contact-section h2 em {
@@ -1114,7 +1042,6 @@
             gap: 36px 22px;
             position: relative;
             z-index: 1;
-            perspective: 1200px;
         }
 
         .product-card {
@@ -1127,29 +1054,12 @@
             overflow: hidden;
             transition: transform .25s cubic-bezier(.2, .7, .3, 1), box-shadow .35s, border-color .35s;
             position: relative;
-            transform-style: preserve-3d;
-            will-change: transform;
-            box-shadow: var(--neu-out);
-        }
-
-        .product-card::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            border-radius: 6px;
-            pointer-events: none;
-            box-shadow: var(--neu-in);
-            opacity: .6;
-            z-index: 0;
         }
 
         .product-card:hover {
-            box-shadow: var(--glow), var(--neu-out);
+            box-shadow: var(--glow), var(--shadow-hover);
             border-color: transparent;
-        }
-
-        [data-theme="dark"] .product-card:hover {
-            box-shadow: var(--glow), var(--neu-out);
+            transform: translateY(-4px);
         }
 
         .product-image {
@@ -1160,54 +1070,16 @@
             z-index: 1;
         }
 
-        .product-image::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(90deg, #e8e0dc 25%, #f0e8e4 50%, #e8e0dc 75%);
-            background-size: 200% 100%;
-            animation: skeleton 1.4s infinite;
-            z-index: 0;
-        }
-
-        [data-theme="dark"] .product-image::before {
-            background: linear-gradient(90deg, #2a2226 25%, #342c30 50%, #2a2226 75%);
-            background-size: 200% 100%;
-        }
-
-        @keyframes skeleton {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
-        }
-
         .product-image img {
             height: 100%;
-            transition: transform .7s cubic-bezier(.2, .7, .3, 1);
+            transition: transform .6s cubic-bezier(.2, .7, .3, 1);
             position: relative;
             z-index: 1;
+            will-change: transform;
         }
 
         .product-card:hover .product-image img {
-            transform: scale(1.12);
-        }
-
-        .product-card .image-reflection {
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            height: 40%;
-            background: linear-gradient(to top, var(--paper), transparent);
-            opacity: 0;
-            transition: opacity .4s;
-            z-index: 2;
-            pointer-events: none;
-            transform: scaleY(-1);
-            filter: blur(4px);
-        }
-
-        .product-card:hover .image-reflection {
-            opacity: .35;
+            transform: scale(1.08);
         }
 
         .corner-mark {
@@ -1260,6 +1132,9 @@
             height: 68px;
             z-index: 3;
             pointer-events: none;
+        }
+
+        .product-card:hover .sticker {
             animation: stickerSpin 12s linear infinite;
         }
 
@@ -1407,13 +1282,6 @@
             text-align: center;
         }
 
-        .empty-illustration {
-            width: 180px;
-            height: 140px;
-            margin: 0 auto 20px;
-            opacity: .6;
-        }
-
         .story-section {
             max-width: var(--container);
             margin: auto;
@@ -1490,7 +1358,6 @@
         .quote-section {
             background: radial-gradient(ellipse at 20% 30%, rgba(168, 80, 101, .15), transparent 60%),
                         radial-gradient(ellipse at 80% 70%, rgba(122, 46, 63, .12), transparent 60%),
-                        radial-gradient(ellipse at 50% 50%, rgba(94, 34, 48, .08), transparent 80%),
                         var(--cream);
             text-align: center;
             padding: 70px 20px 75px;
@@ -1504,14 +1371,9 @@
             position: absolute;
             inset: 0;
             background-image: var(--grain);
-            opacity: .5;
+            background-size: 200px 200px;
+            opacity: .04;
             pointer-events: none;
-            mix-blend-mode: multiply;
-        }
-
-        [data-theme="dark"] .quote-section::before {
-            mix-blend-mode: screen;
-            opacity: .3;
         }
 
         .quote-glass {
@@ -1563,8 +1425,6 @@
             text-align: center;
             padding: 90px 20px;
             background: linear-gradient(135deg, var(--accent-deep), var(--accent-base), var(--accent-light));
-            background-size: 200% 200%;
-            animation: gradientMove 10s ease infinite;
             color: #fff;
             position: relative;
             z-index: 2;
@@ -1576,8 +1436,8 @@
             position: absolute;
             inset: 0;
             background-image: var(--grain);
-            opacity: .35;
-            mix-blend-mode: overlay;
+            background-size: 200px 200px;
+            opacity: .05;
             pointer-events: none;
         }
 
@@ -1594,7 +1454,6 @@
             color: #fff;
             background: none;
             -webkit-text-fill-color: #fff;
-            animation: none;
         }
 
         .contact-section>p:not(.eyebrow) {
@@ -1715,8 +1574,6 @@
             position: fixed;
             inset: 0;
             background: rgba(61, 31, 44, .45);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
             z-index: 60;
             opacity: 0;
             visibility: hidden;
@@ -1734,21 +1591,14 @@
             left: 0;
             bottom: 0;
             width: min(420px, 100%);
-            background: rgba(255, 255, 255, .82);
-            backdrop-filter: blur(24px) saturate(180%);
-            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            background: var(--paper);
             z-index: 61;
             transform: translateX(-100%);
             transition: transform .5s cubic-bezier(.34, 1.2, .64, 1);
             display: flex;
             flex-direction: column;
-            border-right: 1px solid rgba(255, 255, 255, .3);
+            border-right: 1px solid var(--line);
             box-shadow: 8px 0 40px rgba(61, 31, 44, .12);
-        }
-
-        [data-theme="dark"] .cart-drawer {
-            background: rgba(10, 7, 9, .85);
-            border-right-color: rgba(255, 255, 255, .06);
         }
 
         .cart-drawer.open {
@@ -2216,7 +2066,7 @@
             margin: 10px 0 14px;
             text-wrap: balance;
             background: linear-gradient(135deg, var(--ink), var(--accent-base), var(--ink));
-            background-size: 200% 200%;
+            background-size: 100% 100%;
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -2446,7 +2296,6 @@
             inset: 0;
             z-index: 110;
             background: rgba(61, 31, 44, .5);
-            backdrop-filter: blur(4px);
             display: grid;
             place-items: center;
             padding: 20px;
@@ -3089,7 +2938,6 @@
             inset: 0;
             z-index: 250;
             background: rgba(61, 31, 44, .55);
-            backdrop-filter: blur(8px);
             display: grid;
             place-items: center;
             opacity: 0;
@@ -3213,7 +3061,6 @@
                 z-index: 9999;
                 transform: translate(-50%, -50%);
                 transition: width .2s, height .2s, opacity .2s;
-                mix-blend-mode: difference;
             }
 
             .cursor-ring {
@@ -3236,20 +3083,6 @@
                 height: 54px;
                 border-color: var(--ink);
                 opacity: .4;
-            }
-
-            .cursor-sparkle {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 4px;
-                height: 4px;
-                border-radius: 50%;
-                background: var(--accent-light);
-                pointer-events: none;
-                z-index: 9997;
-                opacity: 0;
-                transform: translate(-50%, -50%);
             }
         }
 
@@ -3303,6 +3136,12 @@
                 gap: 12px;
             }
 
+            .site-header {
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
+                background: var(--paper);
+            }
+
             .logo-svg {
                 height: 34px;
             }
@@ -3334,9 +3173,7 @@
                 top: 100%;
                 left: 0;
                 right: 0;
-                background: var(--header-bg);
-                backdrop-filter: blur(18px);
-                -webkit-backdrop-filter: blur(18px);
+                background: var(--paper);
                 border-bottom: 1px solid var(--line);
                 padding: 22px 5%;
                 flex-direction: column;
@@ -3362,6 +3199,10 @@
             .hero-arc {
                 width: 300px;
                 height: 300px;
+            }
+
+            .hero-aurora {
+                display: none;
             }
 
             .hero h1 {
@@ -3443,6 +3284,13 @@
                 right: 7px;
                 gap: 3px;
                 padding: 3px 5px;
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
+                background: rgba(255, 255, 255, .95);
+            }
+
+            [data-theme="dark"] .color-swatches-preview {
+                background: rgba(10, 7, 9, .9);
             }
 
             .color-swatches-preview span {
@@ -3490,6 +3338,13 @@
 
             .quote-glass {
                 padding: 34px 20px 30px;
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
+                background: rgba(255, 255, 255, .5);
+            }
+
+            [data-theme="dark"] .quote-glass {
+                background: rgba(255, 255, 255, .06);
             }
 
             .contact-section {
@@ -3556,6 +3411,11 @@
                 height: 76px;
             }
 
+            .cart-drawer {
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
+            }
+
             .admin-dynamic-row {
                 grid-template-columns: 1fr 1fr auto;
             }
@@ -3576,14 +3436,6 @@
             .reveal {
                 opacity: 1;
                 transform: none;
-            }
-
-            .sticker {
-                animation: none;
-            }
-
-            .hero-arc {
-                animation: none;
             }
         }
     </style>
@@ -4163,6 +4015,7 @@
         let firstVisit = false;
         let miniCartTimeout;
         let recentViews = [];
+        let cardHoverRaf = null;
 
         const productGrid = document.getElementById("productGrid");
         const searchInput = document.getElementById("searchInput");
@@ -4370,8 +4223,7 @@
                 return `
                     <article class="product-card" data-open-product="${product.id}" style="animation-delay:${index * 55}ms">
                         <div class="product-image">
-                            <img src="${escapeHTML(cover)}" alt="${escapeHTML(product.name)}" loading="lazy">
-                            <div class="image-reflection" aria-hidden="true"></div>
+                            <img src="${escapeHTML(cover)}" alt="${escapeHTML(product.name)}" loading="lazy" decoding="async">
                             ${isNew ? `<svg class="sticker" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><path id="circ${product.id}" d="M 50,50 m -37,0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"/></defs><circle cx="50" cy="50" r="38" fill="var(--accent-base)"/><text font-family="Noto Kufi Arabic, sans-serif" font-size="12" font-weight="700" fill="#fff"><textPath href="#circ${product.id}">${escapeHTML(product.badge)} • ${escapeHTML(product.badge)} •</textPath></text></svg>` : ""}
                             ${discount > 0 ? `<span class="product-badge discount">-${discount}%</span>` : ""}
                             ${swatches ? `<div class="color-swatches-preview">${swatches}</div>` : ""}
@@ -4398,40 +4250,29 @@
             resultsCount.textContent = `${visibleProducts.length} ${visibleProducts.length === 1 ? "قطعة" : "قطع"} موجودة`;
             emptyState.hidden = visibleProducts.length !== 0;
 
-            initParallax();
-            init3DTilt();
+            initCardHover();
         }
 
-        function initParallax() {
+        function initCardHover() {
             if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
-            document.querySelectorAll(".product-card").forEach(card => {
-                card.addEventListener("mousemove", e => {
-                    const rect = card.getBoundingClientRect();
-                    const x = (e.clientX - rect.left) / rect.width - 0.5;
-                    const y = (e.clientY - rect.top) / rect.height - 0.5;
-                    const img = card.querySelector(".product-image img");
-                    if (img) {
-                        img.style.transform = `scale(1.12) translate(${x * 12}px, ${y * 12}px)`;
-                    }
-                });
-                card.addEventListener("mouseleave", () => {
-                    const img = card.querySelector(".product-image img");
-                    if (img) img.style.transform = "";
-                });
-            });
-        }
 
-        function init3DTilt() {
-            if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
             document.querySelectorAll(".product-card").forEach(card => {
+                const img = card.querySelector(".product-image img");
+                if (!img) return;
+
                 card.addEventListener("mousemove", e => {
-                    const rect = card.getBoundingClientRect();
-                    const x = (e.clientX - rect.left) / rect.width - 0.5;
-                    const y = (e.clientY - rect.top) / rect.height - 0.5;
-                    card.style.transform = `translateY(-6px) rotateY(${x * 6}deg) rotateX(${-y * 6}deg)`;
+                    if (cardHoverRaf) return;
+                    cardHoverRaf = requestAnimationFrame(() => {
+                        const rect = card.getBoundingClientRect();
+                        const x = (e.clientX - rect.left) / rect.width - 0.5;
+                        const y = (e.clientY - rect.top) / rect.height - 0.5;
+                        img.style.transform = `scale(1.08) translate(${x * 6}px, ${y * 6}px)`;
+                        cardHoverRaf = null;
+                    });
                 });
+
                 card.addEventListener("mouseleave", () => {
-                    card.style.transform = "";
+                    img.style.transform = "";
                 });
             });
         }
@@ -4452,7 +4293,7 @@
                     const cover = (p.images && p.images[0]) || "";
                     return `
                         <article class="product-card" data-open-product="${p.id}">
-                            <div class="product-image"><img src="${escapeHTML(cover)}" alt="${escapeHTML(p.name)}" loading="lazy"></div>
+                            <div class="product-image"><img src="${escapeHTML(cover)}" alt="${escapeHTML(p.name)}" loading="lazy" decoding="async"></div>
                             <div class="product-info">
                                 <h3>${escapeHTML(p.name)}</h3>
                                 <div class="product-bottom"><span class="product-price">${formatIQD(p.price)}</span></div>
@@ -4476,7 +4317,7 @@
                 const cover = (p.images && p.images[0]) || "";
                 return `
                 <button class="suggestion-item" type="button" data-suggestion="${escapeHTML(p.name)}">
-                    <img class="suggestion-thumb" src="${escapeHTML(cover)}" alt="">
+                    <img class="suggestion-thumb" src="${escapeHTML(cover)}" alt="" loading="lazy">
                     <div class="suggestion-text">
                         <span style="color:var(--ink);font-size:13px;">${escapeHTML(p.name)}</span>
                         <span>${escapeHTML(p.category)}</span>
@@ -4566,12 +4407,12 @@
             productDetail.innerHTML = `
                 <div>
                     <div class="gallery-main" id="galleryMain" role="button" tabindex="0" aria-label="تكبير الصورة">
-                        <img src="${escapeHTML(images[0] || "")}" alt="${escapeHTML(product.name)}" id="galleryMainImg">
+                        <img src="${escapeHTML(images[0] || "")}" alt="${escapeHTML(product.name)}" id="galleryMainImg" loading="eager">
                     </div>
                     <div class="gallery-thumbs" id="galleryThumbs">
                         ${images.map((img, i) => `
                             <button type="button" class="${i === 0 ? "active" : ""}" data-thumb="${i}" aria-label="عرض الصورة ${i + 1}">
-                                <img src="${escapeHTML(img)}" alt="${escapeHTML(product.name)} صورة ${i + 1}">
+                                <img src="${escapeHTML(img)}" alt="${escapeHTML(product.name)} صورة ${i + 1}" loading="lazy" decoding="async">
                             </button>
                         `).join("")}
                     </div>
@@ -4724,7 +4565,7 @@
                         const cover = (p.images && p.images[0]) || "";
                         return `
                             <button type="button" data-rec="${p.id}" style="background:transparent;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;padding:0;text-align:right;cursor:pointer;">
-                                <div style="aspect-ratio:4/5;overflow:hidden;background:var(--card-bg);"><img src="${escapeHTML(cover)}" alt="${escapeHTML(p.name)}" style="width:100%;height:100%;object-fit:cover;"></div>
+                                <div style="aspect-ratio:4/5;overflow:hidden;background:var(--card-bg);"><img src="${escapeHTML(cover)}" alt="${escapeHTML(p.name)}" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
                                 <div style="padding:8px;">
                                     <div style="font-size:11px;font-weight:600;line-height:1.3;">${escapeHTML(p.name)}</div>
                                     <div style="font-size:11px;color:var(--accent-base);font-family:var(--mono);margin-top:3px;">${formatIQD(p.price)}</div>
@@ -4897,7 +4738,7 @@
                 const cover = (product.images && product.images[0]) || "";
                 return `
                     <article class="drawer-item">
-                        <img src="${escapeHTML(cover)}" alt="${escapeHTML(product.name)}">
+                        <img src="${escapeHTML(cover)}" alt="${escapeHTML(product.name)}" loading="lazy">
                         <div>
                             <h4>${escapeHTML(product.name)}</h4>
                             <p class="drawer-meta">${escapeHTML(item.size || "")}${item.color ? " / " + escapeHTML(item.color) : ""}</p>
@@ -5010,7 +4851,7 @@
 
             const colors = ["#7a2e3f", "#a85065", "#c97a8e", "#f5d0d8", "#3d9a5f", "#e6b422"];
             const particles = [];
-            for (let i = 0; i < 160; i++) {
+            for (let i = 0; i < 120; i++) {
                 particles.push({
                     x: window.innerWidth / 2,
                     y: window.innerHeight / 2 - 100,
@@ -5251,7 +5092,7 @@
                 const cover = (product.images && product.images[0]) || "";
                 return `
                     <div class="admin-item">
-                        <img src="${escapeHTML(cover)}" alt="${escapeHTML(product.name)}">
+                        <img src="${escapeHTML(cover)}" alt="${escapeHTML(product.name)}" loading="lazy">
                         <div class="admin-item-info">
                             <h4>${escapeHTML(product.name)}</h4>
                             <p>${escapeHTML(product.category)} · ${formatIQD(product.price)} · ${escapeHTML(product.sku || "—")}</p>
@@ -5407,7 +5248,7 @@ ${escapeHTML(itemsText)}
             const wrap = document.getElementById("pfImagePreview");
             wrap.innerHTML = pfImages.map((url, i) => `
                 <div class="admin-image-thumb">
-                    <img src="${escapeHTML(url)}" alt="معاينة">
+                    <img src="${escapeHTML(url)}" alt="معاينة" loading="lazy">
                     <button type="button" data-remove-img="${i}">×</button>
                 </div>
             `).join("");
@@ -5536,43 +5377,22 @@ ${escapeHTML(itemsText)}
 
             document.body.classList.add("custom-cursor");
             let mx = 0, my = 0, rx = 0, ry = 0;
+            let ringRaf = null;
 
-            let sparkleThrottle = 0;
             window.addEventListener("mousemove", e => {
                 mx = e.clientX; my = e.clientY;
                 dot.style.left = mx + "px"; dot.style.top = my + "px";
 
-                const now = Date.now();
-                if (now - sparkleThrottle > 60) {
-                    sparkleThrottle = now;
-                    createSparkle(mx, my);
+                if (!ringRaf) {
+                    ringRaf = requestAnimationFrame(function animateRing() {
+                        rx += (mx - rx) * 0.16;
+                        ry += (my - ry) * 0.16;
+                        ring.style.left = rx + "px";
+                        ring.style.top = ry + "px";
+                        ringRaf = requestAnimationFrame(animateRing);
+                    });
                 }
-            });
-
-            function createSparkle(x, y) {
-                const s = document.createElement("div");
-                s.className = "cursor-sparkle";
-                s.style.left = x + "px";
-                s.style.top = y + "px";
-                s.style.opacity = "0.9";
-                s.style.background = Math.random() > 0.5 ? "var(--accent-light)" : "var(--accent-base)";
-                s.style.width = (Math.random() * 4 + 2) + "px";
-                s.style.height = s.style.width;
-                document.body.appendChild(s);
-                const dx = (Math.random() - 0.5) * 50;
-                const dy = (Math.random() - 0.5) * 50 - 20;
-                s.animate([
-                    { transform: "translate(-50%, -50%) scale(1)", opacity: 0.9 },
-                    { transform: `translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px)) scale(0)`, opacity: 0 }
-                ], { duration: 800, easing: "cubic-bezier(.2,.7,.3,1)" }).onfinish = () => s.remove();
-            }
-
-            function animateRing() {
-                rx += (mx - rx) * 0.16; ry += (my - ry) * 0.16;
-                ring.style.left = rx + "px"; ring.style.top = ry + "px";
-                window.requestAnimationFrame(animateRing);
-            }
-            animateRing();
+            }, { passive: true });
 
             document.addEventListener("mouseover", e => {
                 if (e.target.closest("a, button, input, select, textarea, label, [role='button']")) ring.classList.add("hover");
