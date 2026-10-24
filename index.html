@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
@@ -4016,6 +4017,7 @@
         let miniCartTimeout;
         let recentViews = [];
         let cardHoverRaf = null;
+        let openOverlays = 0;
 
         const productGrid = document.getElementById("productGrid");
         const searchInput = document.getElementById("searchInput");
@@ -4087,8 +4089,18 @@
         const successClose = document.getElementById("successClose");
         const confettiCanvas = document.getElementById("confettiCanvas");
 
+        function lockScroll() {
+            openOverlays++;
+            document.body.style.overflow = "hidden";
+        }
+
+        function unlockScroll() {
+            openOverlays = Math.max(0, openOverlays - 1);
+            if (!openOverlays) document.body.style.overflow = "";
+        }
+
         function formatIQD(amount) {
-            return new Intl.NumberFormat("ar-IQ", { maximumFractionDigits: 0 }).format(amount) + " د.ع";
+            return new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 }).format(amount) + " د.ع";
         }
 
         function generateOrderNumber() {
@@ -4377,14 +4389,14 @@
             renderProductDetail();
             productPage.classList.add("open");
             productPage.setAttribute("aria-hidden", "false");
-            document.body.style.overflow = "hidden";
+            lockScroll();
             productPage.scrollTop = 0;
         }
 
         function closeProductPage() {
             productPage.classList.remove("open");
             productPage.setAttribute("aria-hidden", "true");
-            if (!cartDrawer.classList.contains("open") && !lightbox.classList.contains("open") && !checkoutPage.classList.contains("open") && !adminPage.classList.contains("open") && !successOverlay.classList.contains("show")) document.body.style.overflow = "";
+            unlockScroll();
             renderRecentlyViewed();
         }
 
@@ -4511,6 +4523,7 @@
                 });
             }
 
+            const galleryMain = document.getElementById("galleryMain");
             if (galleryMain) {
                 let touchStartX = 0;
                 let touchStartY = 0;
@@ -4585,13 +4598,13 @@
             lightboxImg.src = src;
             lightbox.classList.add("open");
             lightbox.setAttribute("aria-hidden", "false");
-            document.body.style.overflow = "hidden";
+            lockScroll();
         }
 
         function closeLightbox() {
             lightbox.classList.remove("open");
             lightbox.setAttribute("aria-hidden", "true");
-            if (!productPage.classList.contains("open") && !cartDrawer.classList.contains("open") && !checkoutPage.classList.contains("open") && !adminPage.classList.contains("open") && !successOverlay.classList.contains("show")) document.body.style.overflow = "";
+            unlockScroll();
         }
 
         lightboxClose.addEventListener("click", closeLightbox);
@@ -4601,7 +4614,7 @@
 
         document.addEventListener("keydown", event => {
             if (event.key === "Escape") {
-                if (successOverlay.classList.contains("show")) { successOverlay.classList.remove("show"); }
+                if (successOverlay.classList.contains("show")) { successOverlay.classList.remove("show"); unlockScroll(); }
                 else if (lightbox.classList.contains("open")) closeLightbox();
                 else if (sizeChartPopup.classList.contains("open")) { sizeChartPopup.classList.remove("open"); }
                 else if (productPage.classList.contains("open")) closeProductPage();
@@ -4772,14 +4785,14 @@
             cartDrawer.classList.add("open");
             cartDrawer.setAttribute("aria-hidden", "false");
             cartOverlay.classList.add("open");
-            document.body.style.overflow = "hidden";
+            lockScroll();
         }
 
         function closeCart() {
             cartDrawer.classList.remove("open");
             cartDrawer.setAttribute("aria-hidden", "true");
             cartOverlay.classList.remove("open");
-            if (!productPage.classList.contains("open") && !lightbox.classList.contains("open") && !checkoutPage.classList.contains("open") && !adminPage.classList.contains("open") && !successOverlay.classList.contains("show")) document.body.style.overflow = "";
+            unlockScroll();
         }
 
         cartOpenBtn.addEventListener("click", openCart);
@@ -4793,14 +4806,14 @@
             renderCheckoutSummary();
             checkoutPage.classList.add("open");
             checkoutPage.setAttribute("aria-hidden", "false");
-            document.body.style.overflow = "hidden";
+            lockScroll();
             checkoutPage.scrollTop = 0;
         }
 
         function closeCheckout() {
             checkoutPage.classList.remove("open");
             checkoutPage.setAttribute("aria-hidden", "true");
-            if (!productPage.classList.contains("open") && !cartDrawer.classList.contains("open") && !lightbox.classList.contains("open") && !adminPage.classList.contains("open") && !successOverlay.classList.contains("show")) document.body.style.overflow = "";
+            unlockScroll();
         }
 
         function renderCheckoutSummary() {
@@ -4901,14 +4914,14 @@
             successOrderNum.textContent = orderNumber;
             successOverlay.classList.add("show");
             successOverlay.setAttribute("aria-hidden", "false");
-            document.body.style.overflow = "hidden";
+            lockScroll();
             launchConfetti();
         }
 
         successClose.addEventListener("click", () => {
             successOverlay.classList.remove("show");
             successOverlay.setAttribute("aria-hidden", "true");
-            document.body.style.overflow = "";
+            unlockScroll();
         });
 
         sizeChartClose.addEventListener("click", () => {
@@ -5001,9 +5014,6 @@
             window.setTimeout(() => {
                 window.open(`https://wa.me/9647773798379?text=${encoded}`, "_blank", "noopener,noreferrer");
             }, 100);
-            window.setTimeout(() => {
-                window.open(`https://wa.me/9647777895744?text=${encoded}`, "_blank", "noopener,noreferrer");
-            }, 600);
 
             cart = [];
             saveCart();
@@ -5018,14 +5028,14 @@
         function openAdmin() {
             adminPage.classList.add("open");
             adminPage.setAttribute("aria-hidden", "false");
-            document.body.style.overflow = "hidden";
+            lockScroll();
             if (!isAdmin) adminEmail.focus();
         }
 
         function closeAdmin() {
             adminPage.classList.remove("open");
             adminPage.setAttribute("aria-hidden", "true");
-            if (!productPage.classList.contains("open") && !cartDrawer.classList.contains("open") && !lightbox.classList.contains("open") && !checkoutPage.classList.contains("open") && !successOverlay.classList.contains("show")) document.body.style.overflow = "";
+            unlockScroll();
         }
 
         adminOpen.addEventListener("click", openAdmin);
@@ -5378,20 +5388,32 @@ ${escapeHTML(itemsText)}
             document.body.classList.add("custom-cursor");
             let mx = 0, my = 0, rx = 0, ry = 0;
             let ringRaf = null;
+            let idleTimer = null;
+
+            function animateRing() {
+                rx += (mx - rx) * 0.16;
+                ry += (my - ry) * 0.16;
+                ring.style.left = rx + "px";
+                ring.style.top = ry + "px";
+                ringRaf = requestAnimationFrame(animateRing);
+            }
 
             window.addEventListener("mousemove", e => {
                 mx = e.clientX; my = e.clientY;
                 dot.style.left = mx + "px"; dot.style.top = my + "px";
 
                 if (!ringRaf) {
-                    ringRaf = requestAnimationFrame(function animateRing() {
-                        rx += (mx - rx) * 0.16;
-                        ry += (my - ry) * 0.16;
-                        ring.style.left = rx + "px";
-                        ring.style.top = ry + "px";
-                        ringRaf = requestAnimationFrame(animateRing);
-                    });
+                    rx = mx; ry = my;
+                    ringRaf = requestAnimationFrame(animateRing);
                 }
+
+                clearTimeout(idleTimer);
+                idleTimer = setTimeout(() => {
+                    if (ringRaf) {
+                        cancelAnimationFrame(ringRaf);
+                        ringRaf = null;
+                    }
+                }, 200);
             }, { passive: true });
 
             document.addEventListener("mouseover", e => {
