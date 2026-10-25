@@ -4099,7 +4099,9 @@
         }
 
         function formatIQD(amount) {
-            return new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 }).format(amount) + " د.ع";
+            const num = Number(amount);
+            if (isNaN(num)) return "0 د.ع";
+            return new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 }).format(num) + " د.ع";
         }
 
         function generateOrderNumber() {
@@ -4123,7 +4125,7 @@
             window.clearTimeout(toastTimeout);
             toastTimeout = window.setTimeout(() => {
                 toast.classList.remove("show");
-            }, 3200);
+            }, 5000);
         }
 
         function getProduct(id) {
@@ -4718,14 +4720,13 @@
         }
 
         function getCartCount() { return cart.reduce((total, item) => total + item.quantity, 0); }
-        function getCartTotal() { return cart.reduce((total, item) => { const p = getProduct(item.id); return total + (p ? p.price * item.quantity : 0); }, 0); }
+        function getCartTotal() { return cart.reduce((total, item) => { const p = getProduct(item.id); return total + (p ? Number(p.price) * item.quantity : 0); }, 0); }
 
         function renderCart() {
             const count = getCartCount();
             const total = getCartTotal();
             cartCount.textContent = count;
             drawerSubtotal.textContent = formatIQD(total);
-            // ✅ الإجمالي شامل سعر التوصيل 5000 د.ع عند وجود منتجات
             drawerTotal.textContent = formatIQD(total + (cart.length > 0 ? DELIVERY_FEE : 0));
             drawerCheckout.disabled = cart.length === 0;
 
@@ -4824,11 +4825,10 @@
                 return `
                     <div class="summary-line">
                         <span>${escapeHTML(product.name)}${meta ? ` (${escapeHTML(meta)})` : ""} × ${item.quantity}</span>
-                        <span>${formatIQD(product.price * item.quantity)}</span>
+                        <span>${formatIQD(Number(product.price) * item.quantity)}</span>
                     </div>
                 `;
             }).join("");
-            // ✅ الإجمالي النهائي شامل سعر التوصيل 5000 د.ع
             checkoutTotal.textContent = formatIQD(getCartTotal() + DELIVERY_FEE);
         }
 
@@ -4956,7 +4956,7 @@
                 return {
                     name: product ? product.name : "غير معروف",
                     sku: product ? product.sku : "",
-                    size: item.size, color: item.color, quantity: item.quantity, price: product ? product.price : 0
+                    size: item.size, color: item.color, quantity: item.quantity, price: product ? Number(product.price) : 0
                 };
             });
 
@@ -4964,22 +4964,19 @@
             const total = subtotal + DELIVERY_FEE;
 
             const { error } = await supabase.from('orders').insert([{
-                order_number: orderNumber,
                 customer_name: name,
                 phone: phone,
                 province: province,
                 city: city,
                 address: address,
-                notes: notes,
+                notes: notes ? notes + "\nرقم الطلب: " + orderNumber : "رقم الطلب: " + orderNumber,
                 items: orderItems,
-                subtotal: subtotal,
-                delivery_fee: DELIVERY_FEE,
                 total: total,
                 status: "pending"
             }]);
 
             if (error) {
-                showToast("خطأ في حفظ الطلب. يرجى المحاولة مرة أخرى.", "warn");
+                showToast("خطأ في حفظ الطلب: " + error.message, "warn");
                 checkoutSubmit.disabled = false;
                 checkoutSubmit.innerHTML = `تأكيد الطلب <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>`;
                 return;
@@ -5164,13 +5161,13 @@
                     <div class="admin-order">
                         <div class="admin-order-head">
                             <strong>${escapeHTML(order.customer_name)} — ${escapeHTML(order.phone)}</strong>
-                            <span>${escapeHTML(order.order_number || "")} · ${escapeHTML(new Date(order.created_at).toLocaleString("ar-IQ"))}</span>
+                            <span>${escapeHTML(new Date(order.created_at).toLocaleString("ar-IQ"))}</span>
                         </div>
                         <div class="admin-order-body">${escapeHTML(order.province)} · ${escapeHTML(order.city)} · ${escapeHTML(order.address)}${order.notes ? "\nملاحظات: " + escapeHTML(order.notes) : ""}
 
 ${escapeHTML(itemsText)}
 
-المجموع الفرعي: ${formatIQD(order.subtotal || order.total)} · التوصيل: ${formatIQD(order.delivery_fee || DELIVERY_FEE)} · الإجمالي: ${formatIQD(order.total)} · الدفع عند الاستلام</div>
+الإجمالي: ${formatIQD(order.total)} · الدفع عند الاستلام</div>
                         <div class="admin-order-actions">
                             <button class="admin-mini-btn" type="button" data-wa="${escapeHTML(order.phone)}">فتح واتساب</button>
                         </div>
