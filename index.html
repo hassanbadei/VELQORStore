@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
@@ -3669,7 +3668,7 @@
                 <span id="drawerSubtotal">0 د.ع</span>
             </div>
             <div class="drawer-row total">
-                <span>الإجمالي</span>
+                <span>الإجمالي (شامل التوصيل)</span>
                 <span id="drawerTotal">0 د.ع</span>
             </div>
             <button class="btn btn-dark" id="drawerCheckout" type="button">
@@ -4726,6 +4725,7 @@
             const total = getCartTotal();
             cartCount.textContent = count;
             drawerSubtotal.textContent = formatIQD(total);
+            // ✅ الإجمالي شامل سعر التوصيل 5000 د.ع عند وجود منتجات
             drawerTotal.textContent = formatIQD(total + (cart.length > 0 ? DELIVERY_FEE : 0));
             drawerCheckout.disabled = cart.length === 0;
 
@@ -4828,6 +4828,7 @@
                     </div>
                 `;
             }).join("");
+            // ✅ الإجمالي النهائي شامل سعر التوصيل 5000 د.ع
             checkoutTotal.textContent = formatIQD(getCartTotal() + DELIVERY_FEE);
         }
 
